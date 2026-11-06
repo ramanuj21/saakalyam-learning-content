@@ -1,0 +1,262 @@
+{
+  "assetDigests": [],
+  "attributionNotices": [
+    "Existing source credits remain on metadata records; no source media is part of this tooling archive."
+  ],
+  "baseGitCommit": "a61665a86495444f26009922e792532d6a143315",
+  "datasetVersion": "0.1.0-tooling.1",
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/disputed-answer.md",
+      "sha256": "5b19547fc190c13ec889f4f308c35a695562cd3cb3feacb85b0c9031bddbc67d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/duplicate-content.md",
+      "sha256": "a8b980ead080f603ffaa9480f9177a52a8239d0a4454ee89fc2feb5ee3f1c053"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/media-correction.md",
+      "sha256": "13b5d0dc4a1dd9e20a8ed5a80c21c57ebeb387c717d0657f157808958f26d204"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/missing-provenance.md",
+      "sha256": "d464d1aea262787d37e3b1fce6647ff198c78dbbc963dff54c8ea92ded287016"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/new-question.md",
+      "sha256": "c93e9f6613537d1a1373b4a058711b992af0a5788376e0c20f57a60593db716d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/new-resource.md",
+      "sha256": "149771c8f8298fe7f3387e23059b152b56f1bf0a9716fac9497de167928646b3"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/question-correction.md",
+      "sha256": "789f02c0123484bc8d127746bceb542c9e871285599f8d6e24833861e4dd2345"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/rights-concern.md",
+      "sha256": "9f3981a9269d29bb59eb9449a2c06fa819f182e6c268c39edef49c0ff0360861"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/validation-problem.md",
+      "sha256": "42a28c50c4dcc3b9100f0bd3a865206e7ea8efb9608c5097a4f9cc27ff7e6358"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "a2dc9031db1d862075f89a7e7de3dc670f3fd5f92fbf2eea1703221c3da97680"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "c6a4f79339da1afac22c56d6e09093aff299956e30ae74f3226ca4e23dde5e4b"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "c6bbf881f9d9792841ee6ac93846c24eb30ece613788abcfca4607cef303fde7"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "503968d7acf9a2cfefb8e0a2aaa847f828e3594a61e8f901565198db6facaa06"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "b46a66fb7950094b33237e255a01c49afdcce23f2b31be435d1518c2e4c587cf"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "d9764a5da7329af81f35d4062d99578aec90fa8f1cb8010c76c8fc49b249d78d"
+    },
+    {
+      "path": "GOVERNANCE.md",
+      "sha256": "2427842aa4edee7a09480c3a7d566ea1d410f3962c028f60c2ab32aff2673644"
+    },
+    {
+      "path": "LICENSING.md",
+      "sha256": "3f25267226c3a4562cf3e8129cfb8a713b746d570c67a66e5a5cd332f6462820"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1833d07ebe27625ec07ba6c254fad5dbdc6c669be7698c18598193915013c0da"
+    },
+    {
+      "path": "dependencies.json",
+      "sha256": "58e1570e0f241840e2960353d589a149bfb439f1dce4375b578596adf8705b84"
+    },
+    {
+      "path": "docs/CONTRACTS.md",
+      "sha256": "22b92adfd3525896c73bcda086d063f3582b5168d4a948edbe11f0ef7d3b9145"
+    },
+    {
+      "path": "policies/asset-storage.md",
+      "sha256": "8db01079fa530ccf2cc2aed59b0f4603539ac0547726ed148a118a4c453bc516"
+    },
+    {
+      "path": "policies/eligibility.md",
+      "sha256": "993c7567e5dccc56f8237231f80aed3159cb73ab69a1a21a4a1c82f0032fbe84"
+    },
+    {
+      "path": "policies/provenance.md",
+      "sha256": "49fdf2b9a0cebb3e31999553bebe82d69271682242b3120238f1f142f5dd5870"
+    },
+    {
+      "path": "policies/registry.json",
+      "sha256": "13995c86768dec535279321a122b2ed7ab0858b2854bce1c957ad075ac1f8168"
+    },
+    {
+      "path": "policies/review.md",
+      "sha256": "f2b559dba578d65bdd3b322709e8071e2ef98b9ce6d6805a304322dfbf9cf408"
+    },
+    {
+      "path": "policies/rights.md",
+      "sha256": "9f3b20b1ff4678f4d0b0de94cfaf83cef0aae726538105df7780ece02783b8e8"
+    },
+    {
+      "path": "reports/MIGRATION_READINESS.md",
+      "sha256": "17f0696767280c5c3cbbfe06edb383e406429208cc275fac3c13ea47e6af46bd"
+    },
+    {
+      "path": "reports/VALIDATION.md",
+      "sha256": "a0bb6e8e176dbf477cb9832bddff537b6122bce817247749e028699ee421460d"
+    },
+    {
+      "path": "reports/application-inventory.json",
+      "sha256": "11d511d11c81ad5504782bec00ffe32051ca6dc4505cc03df8c25a24426bdc2f"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "ead6ae335f2e4f11ef9f66f1a7de8c26b2fc66b83518c089ae180f1c80ab0275"
+    },
+    {
+      "path": "schemas/0.1.0/collections/collection.schema.json",
+      "sha256": "74009c7ccb1ea99270c357c31d421297f4089582cea724d3ffd20d26ba219bb3"
+    },
+    {
+      "path": "schemas/0.1.0/common/agent.schema.json",
+      "sha256": "2ca1f7b0460e319d8e8c5dd86aa6dbc2ceb51dd9a5eb870afb5d0e17855afce0"
+    },
+    {
+      "path": "schemas/0.1.0/common/common.schema.json",
+      "sha256": "f73dd367b0e5b28a6f345507b2c2e882d7fa3b50eb5df0576f074d9e7ec0417d"
+    },
+    {
+      "path": "schemas/0.1.0/common/dependencies.schema.json",
+      "sha256": "a7efd3a2e7d7ac5e7b026be5049f613f6c87d948f0211032e0090a18c33d9ef3"
+    },
+    {
+      "path": "schemas/0.1.0/common/text-representation.schema.json",
+      "sha256": "17714544c85e4eca473d1e1521062e84b2c51c0b663ab93571ce361e403b6ddc"
+    },
+    {
+      "path": "schemas/0.1.0/media/media-asset.schema.json",
+      "sha256": "825ee15a1abfb9aa5c23dd5191881eb8906721c872c6e53593919a24e2049f9e"
+    },
+    {
+      "path": "schemas/0.1.0/memberships/collection-membership.schema.json",
+      "sha256": "46633a285b899a4694c4a9f3c021f2d6d04c60ddd3dcacaf1ed954b70278d461"
+    },
+    {
+      "path": "schemas/0.1.0/publishing/manifest.schema.json",
+      "sha256": "dcf9afe395c0e404b9089e19be3cac0e100667543e0846fdaceb19d75dadd798"
+    },
+    {
+      "path": "schemas/0.1.0/publishing/registry.schema.json",
+      "sha256": "6083ddc4a9d053c615f25a95bf74aab8f1e9ea3a36b53f9b97ec5b85dd9ace66"
+    },
+    {
+      "path": "schemas/0.1.0/publishing/retirement-record.schema.json",
+      "sha256": "596c799d47bc1c43da67765fd3f54823e39e65211db6622d141f457d5d42791e"
+    },
+    {
+      "path": "schemas/0.1.0/publishing/review-record.schema.json",
+      "sha256": "425bce0f753a871d1efc62cb09e41cef8440b31ff6976eb04cc8c127583f7b8e"
+    },
+    {
+      "path": "schemas/0.1.0/publishing/workflow-record.schema.json",
+      "sha256": "5c753bf95e4e290ca94bc0559775b0eb7e9ebb4e85fc7df3623f0c4ad2732fa3"
+    },
+    {
+      "path": "schemas/0.1.0/questions/question.schema.json",
+      "sha256": "9d15a128231c08d958689da7ed417dc85ddc21be24e9c0cc922ecbb1083351c0"
+    },
+    {
+      "path": "schemas/0.1.0/questions/rubric.schema.json",
+      "sha256": "5fef0b6b16f2e0025a80b6a611149698dcfbac259682d619819a82e416ef70ed"
+    },
+    {
+      "path": "schemas/0.1.0/questions/scholarly-component.schema.json",
+      "sha256": "0e5aa4952acff92c05406032e0bffa534efc650bd7060c7b8c875b266bf316b2"
+    },
+    {
+      "path": "schemas/0.1.0/resources/resource.schema.json",
+      "sha256": "961b2375e75a3c09ce3cd64b679d09420f010961e26f488d5ef519c8b42948e3"
+    },
+    {
+      "path": "schemas/0.1.0/rights/rights-statement.schema.json",
+      "sha256": "6dbc8bccf3b9d6449f21dafa643e15626853ec2446eb1697ff6f0320e8225c01"
+    },
+    {
+      "path": "schemas/0.1.0/sources/source-edition.schema.json",
+      "sha256": "33db26afd6c64553c2290c9e94d5c9f47d47bd81b2c1b33bfc2ec2d6f6c5387a"
+    },
+    {
+      "path": "schemas/0.1.0/sources/source-reference.schema.json",
+      "sha256": "5ae57c89b5215f9be03250a6d72f5c9f5c1dc98ab1a097c2195f832ab93c563c"
+    },
+    {
+      "path": "schemas/0.1.0/sources/source-work.schema.json",
+      "sha256": "4e77acb814ee54ffb010a1bfd20c84c554cdd90f28e3f36f490d1b1549a99416"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/fixtures/synthetic.json",
+      "sha256": "3016dc6bf8a45b721f92368d27ccdfd2fa10b1a06801ffe4c6a884405090392a"
+    },
+    {
+      "path": "tests/test_content.py",
+      "sha256": "5a8feb0b4d3d16ad82c61990129c268857d2551308a61062877cba6daa44e79f"
+    },
+    {
+      "path": "validation/__init__.py",
+      "sha256": "557606114d1a282329bbfe491a7c94fe8d2e98e81d1d72005ba042440237e31d"
+    },
+    {
+      "path": "validation/__main__.py",
+      "sha256": "c2b300cabbb0b46b4109c9c9da80d629d5518457105ecfebe8c83738d5c81311"
+    },
+    {
+      "path": "validation/audit_publication.py",
+      "sha256": "7d9d4eaea7367715f522f768ae18e703a9ebaadc8932c120f8cb5331456d48e2"
+    },
+    {
+      "path": "validation/core.py",
+      "sha256": "361215a93f908496849fa65c588b34899c3e65eb642c66f38e7c58fe2d862ed5"
+    },
+    {
+      "path": "validation/inventory_application.py",
+      "sha256": "bb7f397a59316a06af859a44086768077d29bb9c90ba46935ff286e0ee18ce28"
+    },
+    {
+      "path": "validation/resolution.py",
+      "sha256": "9013b5e71f05038ef8c96e11b7bbb84b56f6bb00332fbf28b026685f4bea95bb"
+    }
+  ],
+  "limitations": [
+    "Tooling snapshot only; no learner content release, approved question, media binary or publication rights asserted."
+  ],
+  "members": [],
+  "mode": "tooling",
+  "resolutionMap": {},
+  "reviewDependencies": [],
+  "rightsNotices": [
+    "Licensing decisions remain pending. Public availability is not a redistribution/adaptation grant for Pravesha source content."
+  ],
+  "schemaVersion": "0.1.0",
+  "validation": {
+    "errors": 0,
+    "mode": "tooling",
+    "validatorVersion": "0.1.0"
+  }
+}
