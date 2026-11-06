@@ -1,0 +1,33 @@
+{
+  "attributions": [
+    {
+      "agentId": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+      "role": "curator"
+    }
+  ],
+  "description": "Reference to an existing introduction PDF. The file is not redistributed here; source rights and editorial review remain unresolved.",
+  "entityType": "resource",
+  "id": "b860548b-851c-43b1-bdd7-e2a1e15f7825",
+  "intendedUse": "Editorial resource inventory; not learner-ready teaching material.",
+  "language": "sa",
+  "mediaRefs": [
+    {
+      "id": "2658da4b-e869-4642-84d4-5b1fbb196c05",
+      "revision": 1
+    }
+  ],
+  "origin": "authored",
+  "ownership": {
+    "scope": "shared"
+  },
+  "provenance": {
+    "inputRefs": [],
+    "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+    "sourceRefs": []
+  },
+  "resourceKind": "presentation",
+  "revision": 1,
+  "rightsId": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "schemaVersion": "0.1.0",
+  "title": "Pravesha introduction presentation — external metadata reference"
+}

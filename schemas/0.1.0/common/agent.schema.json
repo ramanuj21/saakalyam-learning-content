@@ -1,0 +1,96 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:agent",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "agentKind": {
+          "enum": [
+            "person",
+            "organisation",
+            "pseudonym"
+          ]
+        },
+        "displayName": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "entityType": {
+          "const": "agent"
+        },
+        "externalIdentifiers": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "scheme": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "value": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "scheme",
+              "value"
+            ],
+            "type": "object"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "publicLinks": {
+          "items": {
+            "format": "uri",
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "agentKind",
+        "displayName"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "agentKind",
+      "displayName",
+      "externalIdentifiers",
+      "publicLinks"
+    ]
+  },
+  "type": "object"
+}

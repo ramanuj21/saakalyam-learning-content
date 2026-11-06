@@ -1,0 +1,3 @@
+# Rights and safe disclosure
+
+Assess access/link, reproduction, redistribution, adaptation and licence obligations independently. Unknown/rejected or insufficient evidence blocks affected release use. Draft status never protects a public upload. Private permission evidence stays private; only a safe record identifier/digest may be public. Review exact rights-statement revision, scope/layers, intended uses and dependencies. An ancient work, current website access, metadata completeness or a new database licence never clears modern representations or media. The initial pilot publishes metadata only; no original or adapted teaching payload is admitted.

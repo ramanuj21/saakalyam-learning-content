@@ -1,0 +1,63 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:collection-membership",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "collectionId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "entityType": {
+          "const": "collection-membership"
+        },
+        "order": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "target": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        }
+      },
+      "required": [
+        "collectionId",
+        "target",
+        "order"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "collectionId",
+      "target",
+      "order"
+    ]
+  },
+  "type": "object"
+}

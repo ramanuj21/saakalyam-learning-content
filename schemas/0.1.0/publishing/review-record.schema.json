@@ -1,0 +1,94 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:review-record",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "contextUri": {
+          "format": "uri",
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "approved",
+            "changes-requested",
+            "rejected"
+          ]
+        },
+        "dependencyRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "entityType": {
+          "const": "review-record"
+        },
+        "rationale": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reviewScope": {
+          "enum": [
+            "scholarly",
+            "editorial",
+            "rights",
+            "pedagogical"
+          ]
+        },
+        "reviewedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "reviewerRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "targetRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "targetSha256": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+        }
+      },
+      "required": [
+        "targetRef",
+        "targetSha256",
+        "reviewerRef",
+        "reviewScope",
+        "decision",
+        "reviewedAt",
+        "rationale",
+        "dependencyRefs"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "targetRef",
+      "targetSha256",
+      "reviewerRef",
+      "reviewScope",
+      "decision",
+      "reviewedAt",
+      "rationale",
+      "dependencyRefs",
+      "contextUri"
+    ]
+  },
+  "type": "object"
+}

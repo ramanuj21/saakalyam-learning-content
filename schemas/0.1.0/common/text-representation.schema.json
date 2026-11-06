@@ -1,0 +1,136 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:text-representation",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "entityType": {
+          "const": "text-representation"
+        },
+        "language": {
+          "minLength": 2,
+          "type": "string"
+        },
+        "ownerId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "purpose": {
+          "enum": [
+            "lemma",
+            "label",
+            "source-text",
+            "transliteration",
+            "component-text"
+          ]
+        },
+        "scheme": {
+          "enum": [
+            "IAST",
+            "ISO-15919",
+            "SLP1",
+            "ITRANS",
+            "HK"
+          ]
+        },
+        "script": {
+          "pattern": "^[A-Z][a-z]{3}$",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "ownerId",
+        "purpose",
+        "language",
+        "script",
+        "text"
+      ],
+      "type": "object"
+    },
+    {
+      "else": {
+        "not": {
+          "required": [
+            "scheme"
+          ]
+        }
+      },
+      "if": {
+        "properties": {
+          "purpose": {
+            "const": "transliteration"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "inputRefs": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "method"
+            ]
+          },
+          "script": {
+            "const": "Latn"
+          }
+        },
+        "required": [
+          "scheme"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "purpose": {
+            "const": "source-text"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "provenance": {
+            "properties": {
+              "sourceRefs": {
+                "minItems": 1
+              }
+            },
+            "required": [
+              "method"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "ownerId",
+      "purpose",
+      "language",
+      "script",
+      "scheme",
+      "text"
+    ]
+  },
+  "type": "object"
+}

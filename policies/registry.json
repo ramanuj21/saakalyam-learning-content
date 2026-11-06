@@ -1,0 +1,29 @@
+{
+  "learnerReleaseEnabled": false,
+  "normalisationPolicies": {
+    "identity-v1": "Exact Unicode scalar identity; no folding or script equivalence.",
+    "manual-review-v1": "No automatic text equality; apply the reviewed rubric through qualified human review.",
+    "trim-edge-unicode-v1": "Trim Unicode whitespace at edges only; preserve internal spacing, diacritics, script and normalization form."
+  },
+  "publicContentSubmissions": "metadata-proposals-only",
+  "reviewAuthorities": [],
+  "schemaVersion": "0.1.0",
+  "schemas": {
+    "agent": "schemas/0.1.0/common/agent.schema.json",
+    "collection": "schemas/0.1.0/collections/collection.schema.json",
+    "collection-membership": "schemas/0.1.0/memberships/collection-membership.schema.json",
+    "media-asset": "schemas/0.1.0/media/media-asset.schema.json",
+    "question": "schemas/0.1.0/questions/question.schema.json",
+    "resource": "schemas/0.1.0/resources/resource.schema.json",
+    "retirement-record": "schemas/0.1.0/publishing/retirement-record.schema.json",
+    "review-record": "schemas/0.1.0/publishing/review-record.schema.json",
+    "rights-statement": "schemas/0.1.0/rights/rights-statement.schema.json",
+    "rubric": "schemas/0.1.0/questions/rubric.schema.json",
+    "scholarly-component": "schemas/0.1.0/questions/scholarly-component.schema.json",
+    "source-edition": "schemas/0.1.0/sources/source-edition.schema.json",
+    "source-reference": "schemas/0.1.0/sources/source-reference.schema.json",
+    "source-work": "schemas/0.1.0/sources/source-work.schema.json",
+    "text-representation": "schemas/0.1.0/common/text-representation.schema.json",
+    "workflow-record": "schemas/0.1.0/publishing/workflow-record.schema.json"
+  }
+}

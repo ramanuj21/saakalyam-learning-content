@@ -1,0 +1,33 @@
+{
+  "attributions": [
+    {
+      "agentId": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+      "role": "curator"
+    }
+  ],
+  "description": "Existing external course recording link; playback, captions, creator identity and reproduction permissions have not been verified.",
+  "entityType": "resource",
+  "id": "0fc91d1f-a4f9-44ed-800e-c3a56613aa43",
+  "intendedUse": "Editorial resource inventory; not learner-ready teaching material.",
+  "language": "sa",
+  "mediaRefs": [
+    {
+      "id": "efeaef5e-a328-45c4-9e31-e7253852db9d",
+      "revision": 1
+    }
+  ],
+  "origin": "authored",
+  "ownership": {
+    "scope": "shared"
+  },
+  "provenance": {
+    "inputRefs": [],
+    "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+    "sourceRefs": []
+  },
+  "resourceKind": "recording",
+  "revision": 1,
+  "rightsId": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "schemaVersion": "0.1.0",
+  "title": "Pravesha introduction class — external recording reference"
+}

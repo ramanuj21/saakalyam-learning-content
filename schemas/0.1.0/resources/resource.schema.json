@@ -1,0 +1,108 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:resource",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "adaptationOfRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "entityType": {
+          "const": "resource"
+        },
+        "intendedUse": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "language": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "mediaRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "programmeRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "relatedQuestionRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "resourceKind": {
+          "enum": [
+            "study-document",
+            "presentation",
+            "workbook",
+            "recording",
+            "audio-lesson",
+            "reading",
+            "reference-material",
+            "supplementary-material"
+          ]
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "resourceKind",
+        "language",
+        "intendedUse",
+        "mediaRefs"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "title",
+      "description",
+      "resourceKind",
+      "language",
+      "intendedUse",
+      "mediaRefs",
+      "programmeRefs",
+      "relatedQuestionRefs",
+      "adaptationOfRefs"
+    ]
+  },
+  "type": "object"
+}

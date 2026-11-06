@@ -1,0 +1,63 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:workflow-record",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "entityType": {
+          "const": "workflow-record"
+        },
+        "note": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "recordedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "stage": {
+          "enum": [
+            "draft",
+            "review"
+          ]
+        },
+        "targetRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "targetSha256": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+        }
+      },
+      "required": [
+        "targetRef",
+        "targetSha256",
+        "stage",
+        "recordedAt",
+        "note"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "targetRef",
+      "targetSha256",
+      "stage",
+      "recordedAt",
+      "note"
+    ]
+  },
+  "type": "object"
+}

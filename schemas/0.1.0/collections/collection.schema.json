@@ -1,0 +1,70 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:collection",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "entityType": {
+          "const": "collection"
+        },
+        "membershipPolicy": {
+          "const": "explicit-ordered-questions"
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "purpose": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "purpose",
+        "description",
+        "membershipPolicy"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "title",
+      "purpose",
+      "description",
+      "membershipPolicy"
+    ]
+  },
+  "type": "object"
+}

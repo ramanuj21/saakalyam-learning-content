@@ -1,0 +1,27 @@
+{
+  "agentKind": "pseudonym",
+  "attributions": [
+    {
+      "agentId": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+      "role": "curator"
+    }
+  ],
+  "displayName": "ramanuj21",
+  "entityType": "agent",
+  "id": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+  "origin": "authored",
+  "ownership": {
+    "scope": "shared"
+  },
+  "provenance": {
+    "inputRefs": [],
+    "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+    "sourceRefs": []
+  },
+  "publicLinks": [
+    "https://github.com/ramanuj21"
+  ],
+  "revision": 1,
+  "rightsId": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "schemaVersion": "0.1.0"
+}

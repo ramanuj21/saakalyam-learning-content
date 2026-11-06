@@ -1,0 +1,32 @@
+{
+  "attributions": [
+    {
+      "agentId": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+      "role": "curator"
+    }
+  ],
+  "availability": "unverified",
+  "creditLine": "Saakalyam companion course · Introduction class",
+  "entityType": "media-asset",
+  "format": "Externally hosted YouTube reference",
+  "id": "efeaef5e-a328-45c4-9e31-e7253852db9d",
+  "language": "sa",
+  "mediaKind": "video",
+  "origin": "bibliographic",
+  "ownership": {
+    "scope": "shared"
+  },
+  "provenance": {
+    "inputRefs": [],
+    "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+    "sourceRefs": []
+  },
+  "reproductionRightsId": "15f42d25-3642-40ef-af12-e6431d80a132",
+  "revision": 1,
+  "rightsId": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "schemaVersion": "0.1.0",
+  "storage": {
+    "kind": "external",
+    "uri": "https://youtu.be/oVSEGPzdwyY"
+  }
+}

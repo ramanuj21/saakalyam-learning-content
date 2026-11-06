@@ -1,0 +1,3 @@
+# Eligibility
+
+Authoring validation checks actual structure/references and reports unresolved publication requirements as warnings. Release validation treats them as errors: synthetic origin, unknown rights, missing independent reviews/evidence, unavailable media, retired/withdrawn dependencies, unresolved external canonical packages and missing governance/restriction trust are blocking. There is no permissive `eligible: true` field. Default learner release is disabled. An approved question depends on exact prompt/options/answer or rubric and evidence revisions, not merely a published word label. This implementation checks definitions only; it executes no assessment, grade, attempt or learner projection.

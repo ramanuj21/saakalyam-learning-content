@@ -1,0 +1,77 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:rubric",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "criteria": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "descriptionRef": {
+                "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+              },
+              "key": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "descriptionRef"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "entityType": {
+          "const": "rubric"
+        },
+        "guidanceRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "reviewMethod": {
+          "const": "qualified-human-review"
+        },
+        "title": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "criteria",
+        "reviewMethod"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "title",
+      "criteria",
+      "guidanceRefs",
+      "reviewMethod"
+    ]
+  },
+  "type": "object"
+}

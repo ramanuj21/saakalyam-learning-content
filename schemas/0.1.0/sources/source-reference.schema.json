@@ -1,0 +1,65 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:source-reference",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "editionRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "entityType": {
+          "const": "source-reference"
+        },
+        "locator": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/locator"
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "placementId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "unitId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        }
+      },
+      "required": [
+        "editionRef",
+        "locator"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "editionRef",
+      "locator",
+      "unitId",
+      "placementId"
+    ]
+  },
+  "type": "object"
+}

@@ -1,0 +1,348 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:common",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "attributions": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "agentId": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+          },
+          "attributionStatus": {
+            "enum": [
+              "established",
+              "traditional",
+              "disputed",
+              "unknown"
+            ]
+          },
+          "evidenceRefs": {
+            "items": {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+            },
+            "minItems": 0,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "role": {
+            "enum": [
+              "author",
+              "editor",
+              "transcriber",
+              "translator",
+              "commentator",
+              "annotator",
+              "contributor",
+              "curator",
+              "reviewer"
+            ]
+          }
+        },
+        "required": [
+          "agentId",
+          "role"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "header": {
+      "properties": {
+        "attributions": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/attributions"
+        },
+        "entityType": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "transcribed",
+            "imported",
+            "adapted",
+            "derived",
+            "bibliographic",
+            "synthetic"
+          ]
+        },
+        "ownership": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+        },
+        "provenance": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/provenance"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "rightsId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "schemaVersion": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "id",
+        "entityType",
+        "schemaVersion",
+        "revision",
+        "origin",
+        "attributions",
+        "rightsId",
+        "ownership",
+        "provenance"
+      ],
+      "type": "object"
+    },
+    "label": {
+      "additionalProperties": false,
+      "properties": {
+        "language": {
+          "minLength": 2,
+          "type": "string"
+        },
+        "script": {
+          "pattern": "^[A-Z][a-z]{3}$",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "language",
+        "script"
+      ],
+      "type": "object"
+    },
+    "locator": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "scheme": {
+                "const": "other"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "description"
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "citation": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "parts": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "value": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "scheme": {
+          "enum": [
+            "amara-kanda-varga-verse",
+            "ramayana-kanda-sarga-verse",
+            "panini-adhyaya-pada-sutra",
+            "page",
+            "folio",
+            "uri-fragment",
+            "other"
+          ]
+        },
+        "url": {
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scheme",
+        "parts",
+        "citation"
+      ],
+      "type": "object"
+    },
+    "ownership": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "scope": {
+              "const": "shared"
+            }
+          },
+          "required": [
+            "scope"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "programmeId": {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+            },
+            "scope": {
+              "const": "programme"
+            }
+          },
+          "required": [
+            "scope",
+            "programmeId"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "pinnedRef": {
+      "allOf": [
+        {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ref"
+        },
+        {
+          "required": [
+            "revision"
+          ]
+        }
+      ]
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "inputRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "method": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "note": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sourceRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "sourceRefs",
+        "inputRefs"
+      ],
+      "type": "object"
+    },
+    "ref": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "selector": {
+      "additionalProperties": false,
+      "properties": {
+        "end": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "exact": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "representationRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "start": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "representationRef",
+        "start",
+        "end",
+        "exact"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "tokenRef": {
+      "additionalProperties": false,
+      "properties": {
+        "componentRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "tokenKey": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "componentRef",
+        "tokenKey"
+      ],
+      "type": "object"
+    },
+    "uuid": {
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[45][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "type": "string"
+    }
+  }
+}

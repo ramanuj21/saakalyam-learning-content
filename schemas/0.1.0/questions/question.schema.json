@@ -1,0 +1,544 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:question",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "answerDependencies": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "blanks": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "key"
+            ],
+            "type": "object"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "difficulty": {
+          "enum": [
+            "introductory",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "entityType": {
+          "const": "question"
+        },
+        "evaluation": {
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "mode": {
+                    "const": "choice-keys"
+                  }
+                }
+              },
+              "then": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "answerRefs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "blankAnswers"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "pairs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "rubricRef"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "matchingPolicy"
+                      ]
+                    }
+                  ]
+                },
+                "required": [
+                  "correctOptionKeys"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "mode": {
+                    "const": "accepted-answers"
+                  }
+                }
+              },
+              "then": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "correctOptionKeys"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "blankAnswers"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "pairs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "rubricRef"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "matchingPolicy"
+                      ]
+                    }
+                  ]
+                },
+                "required": [
+                  "answerRefs"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "mode": {
+                    "const": "blanks"
+                  }
+                }
+              },
+              "then": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "answerRefs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "correctOptionKeys"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "pairs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "rubricRef"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "matchingPolicy"
+                      ]
+                    }
+                  ]
+                },
+                "required": [
+                  "blankAnswers"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "mode": {
+                    "const": "matching"
+                  }
+                }
+              },
+              "then": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "answerRefs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "correctOptionKeys"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "blankAnswers"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "rubricRef"
+                      ]
+                    }
+                  ]
+                },
+                "required": [
+                  "pairs",
+                  "matchingPolicy"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "mode": {
+                    "const": "rubric"
+                  }
+                }
+              },
+              "then": {
+                "not": {
+                  "anyOf": [
+                    {
+                      "required": [
+                        "answerRefs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "correctOptionKeys"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "blankAnswers"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "pairs"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "matchingPolicy"
+                      ]
+                    }
+                  ]
+                },
+                "required": [
+                  "rubricRef"
+                ]
+              }
+            }
+          ],
+          "properties": {
+            "answerRefs": {
+              "items": {
+                "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "blankAnswers": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "answerRefs": {
+                    "items": {
+                      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+                    },
+                    "minItems": 1,
+                    "type": "array",
+                    "uniqueItems": true
+                  },
+                  "blankKey": {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "blankKey",
+                  "answerRefs"
+                ],
+                "type": "object"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "correctOptionKeys": {
+              "items": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "matchingPolicy": {
+              "const": "one-right-per-left"
+            },
+            "mode": {
+              "enum": [
+                "choice-keys",
+                "accepted-answers",
+                "blanks",
+                "matching",
+                "rubric"
+              ]
+            },
+            "normalisationPolicyId": {
+              "enum": [
+                "identity-v1",
+                "trim-edge-unicode-v1",
+                "manual-review-v1"
+              ]
+            },
+            "pairs": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "leftKey": {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                    "type": "string"
+                  },
+                  "rightKey": {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "leftKey",
+                  "rightKey"
+                ],
+                "type": "object"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "rubricRef": {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+            }
+          },
+          "required": [
+            "mode",
+            "normalisationPolicyId"
+          ],
+          "type": "object"
+        },
+        "explanationRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "feedbackRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "instructionRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "knowledgeRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "left": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                "type": "string"
+              },
+              "textRef": {
+                "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+              }
+            },
+            "required": [
+              "key",
+              "textRef"
+            ],
+            "type": "object"
+          },
+          "minItems": 2,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "options": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                "type": "string"
+              },
+              "textRef": {
+                "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+              }
+            },
+            "required": [
+              "key",
+              "textRef"
+            ],
+            "type": "object"
+          },
+          "minItems": 2,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "promptRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "questionType": {
+          "enum": [
+            "single-choice",
+            "multiple-select",
+            "true-false",
+            "fill-in-blanks",
+            "matching",
+            "word-form-identification",
+            "sentence-correction",
+            "translation",
+            "sentence-construction",
+            "word-formation",
+            "grammatical-analysis",
+            "sanskrit-composition",
+            "short-answer",
+            "long-answer",
+            "explanation",
+            "open-ended"
+          ]
+        },
+        "right": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+                "type": "string"
+              },
+              "textRef": {
+                "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+              }
+            },
+            "required": [
+              "key",
+              "textRef"
+            ],
+            "type": "object"
+          },
+          "minItems": 2,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "suitability": {
+          "additionalProperties": false,
+          "properties": {
+            "language": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "note": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "note"
+          ],
+          "type": "object"
+        },
+        "topicRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "questionType",
+        "promptRef",
+        "knowledgeRefs",
+        "answerDependencies",
+        "evaluation"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "questionType",
+      "promptRef",
+      "knowledgeRefs",
+      "answerDependencies",
+      "evaluation",
+      "instructionRefs",
+      "explanationRefs",
+      "feedbackRefs",
+      "topicRefs",
+      "options",
+      "blanks",
+      "left",
+      "right",
+      "difficulty",
+      "suitability"
+    ]
+  },
+  "type": "object"
+}

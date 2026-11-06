@@ -1,0 +1,148 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:source-edition",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "accessedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "basedOnEditionRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "bibliographicDescription": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "editionKind": {
+          "enum": [
+            "print",
+            "manuscript",
+            "digital-transcription",
+            "website-version",
+            "recording"
+          ]
+        },
+        "editionStatement": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "editorRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "entityType": {
+          "const": "source-edition"
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "publicationDate": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "publisher": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "recension": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reproductionRightsId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "unresolvedFields": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "urls": {
+          "items": {
+            "format": "uri",
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "volumes": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "workId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        }
+      },
+      "required": [
+        "workId",
+        "editionKind",
+        "bibliographicDescription",
+        "reproductionRightsId",
+        "basedOnEditionRefs"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "workId",
+      "editionKind",
+      "bibliographicDescription",
+      "reproductionRightsId",
+      "basedOnEditionRefs",
+      "recension",
+      "editorRefs",
+      "publisher",
+      "publicationDate",
+      "editionStatement",
+      "volumes",
+      "urls",
+      "accessedAt",
+      "unresolvedFields"
+    ]
+  },
+  "type": "object"
+}

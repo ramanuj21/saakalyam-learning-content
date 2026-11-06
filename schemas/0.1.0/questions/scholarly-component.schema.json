@@ -1,0 +1,57 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:scholarly-component",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "attachment": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "componentKind": {
+          "enum": [
+            "learning-instruction",
+            "learning-explanation",
+            "learning-feedback"
+          ]
+        },
+        "entityType": {
+          "const": "scholarly-component"
+        },
+        "representationRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "componentKind",
+        "attachment",
+        "representationRefs"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "componentKind",
+      "attachment",
+      "representationRefs"
+    ]
+  },
+  "type": "object"
+}

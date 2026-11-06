@@ -1,0 +1,1335 @@
+{
+  "dependencies": {
+    "records": [
+      {
+        "datasetUri": "urn:saakalyam:test:synthetic-knowledge",
+        "datasetVersion": "0.0.0-synthetic",
+        "entityType": "grammar-concept",
+        "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+        "revision": 1,
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    ],
+    "schemaVersion": "0.1.0"
+  },
+  "notice": "Synthetic English test fixtures only. Never part of data/, learner eligibility or a learner release. No genuine rights or scholarly approval.",
+  "records": [
+    {
+      "agentKind": "pseudonym",
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "displayName": "Synthetic test contributor — not a real person",
+      "entityType": "agent",
+      "id": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "basis": "unknown",
+      "entityType": "rights-statement",
+      "evidence": [],
+      "id": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "layers": [
+        "record-metadata",
+        "catalogue-metadata",
+        "authored-learning",
+        "representation",
+        "source-material"
+      ],
+      "materialDescription": "Synthetic test fixture only; no permission or reviewer appointment is asserted.",
+      "materialRefs": [],
+      "obligations": [],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "proposedUses": [],
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "18d3719c-609f-4c82-b63e-b6b7cf25ce19",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "75920e0e-16e3-4756-baed-7ea738bb8262",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Synthetic test task: select or describe the blue square."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "413daf55-ceb6-4147-b575-88fc8106bc74",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "75920e0e-16e3-4756-baed-7ea738bb8262",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "blue square"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "af4194b9-69f5-414e-abdf-8e9b25e35425",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "75920e0e-16e3-4756-baed-7ea738bb8262",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "red square"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "413daf55-ceb6-4147-b575-88fc8106bc74",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "correctOptionKeys": [
+          "blue"
+        ],
+        "mode": "choice-keys",
+        "normalisationPolicyId": "identity-v1"
+      },
+      "id": "75920e0e-16e3-4756-baed-7ea738bb8262",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "options": [
+        {
+          "key": "blue",
+          "textRef": {
+            "id": "413daf55-ceb6-4147-b575-88fc8106bc74",
+            "revision": 1
+          }
+        },
+        {
+          "key": "red",
+          "textRef": {
+            "id": "af4194b9-69f5-414e-abdf-8e9b25e35425",
+            "revision": 1
+          }
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "18d3719c-609f-4c82-b63e-b6b7cf25ce19",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "single-choice",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "25042bf5-a3ee-4591-b63b-da465ef3db58",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "df74a19c-449c-4d8b-b4ba-646c9aab1e4f",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Synthetic test task: select or describe the blue square."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "d26ebbcb-0a68-474b-9bbb-7c3c5eae6497",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "df74a19c-449c-4d8b-b4ba-646c9aab1e4f",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "blue square"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "4027d3f7-fdbc-4bb3-a224-68b8fc4dd01f",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "df74a19c-449c-4d8b-b4ba-646c9aab1e4f",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "red square"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "d26ebbcb-0a68-474b-9bbb-7c3c5eae6497",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "correctOptionKeys": [
+          "blue",
+          "red"
+        ],
+        "mode": "choice-keys",
+        "normalisationPolicyId": "identity-v1"
+      },
+      "id": "df74a19c-449c-4d8b-b4ba-646c9aab1e4f",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "options": [
+        {
+          "key": "blue",
+          "textRef": {
+            "id": "d26ebbcb-0a68-474b-9bbb-7c3c5eae6497",
+            "revision": 1
+          }
+        },
+        {
+          "key": "red",
+          "textRef": {
+            "id": "4027d3f7-fdbc-4bb3-a224-68b8fc4dd01f",
+            "revision": 1
+          }
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "25042bf5-a3ee-4591-b63b-da465ef3db58",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "multiple-select",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "85ed4e7f-74de-425a-9ed5-6fe22f2b2e32",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "1a4eb497-8741-4188-ab31-9d820ffd23e7",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Synthetic test task: select or describe the blue square."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "bab64cba-3227-4afd-b933-0caf9fc3fc88",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "1a4eb497-8741-4188-ab31-9d820ffd23e7",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "blue square"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "fee80a25-eb90-4c96-8871-78bf6d1c218a",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "1a4eb497-8741-4188-ab31-9d820ffd23e7",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "red square"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "bab64cba-3227-4afd-b933-0caf9fc3fc88",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "correctOptionKeys": [
+          "blue"
+        ],
+        "mode": "choice-keys",
+        "normalisationPolicyId": "identity-v1"
+      },
+      "id": "1a4eb497-8741-4188-ab31-9d820ffd23e7",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "options": [
+        {
+          "key": "blue",
+          "textRef": {
+            "id": "bab64cba-3227-4afd-b933-0caf9fc3fc88",
+            "revision": 1
+          }
+        },
+        {
+          "key": "red",
+          "textRef": {
+            "id": "fee80a25-eb90-4c96-8871-78bf6d1c218a",
+            "revision": 1
+          }
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "85ed4e7f-74de-425a-9ed5-6fe22f2b2e32",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "true-false",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "4f9ff848-730d-432a-88c9-2e46c21ec248",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "251be39c-3f8c-40f1-92f8-8919a503d1ae",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "The square is {{colour}}."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "16740398-b944-4b8f-a3f8-7b6a5dccf8e1",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "251be39c-3f8c-40f1-92f8-8919a503d1ae",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "blue"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "16740398-b944-4b8f-a3f8-7b6a5dccf8e1",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "blanks": [
+        {
+          "key": "colour"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "blankAnswers": [
+          {
+            "answerRefs": [
+              {
+                "id": "16740398-b944-4b8f-a3f8-7b6a5dccf8e1",
+                "revision": 1
+              }
+            ],
+            "blankKey": "colour"
+          }
+        ],
+        "mode": "blanks",
+        "normalisationPolicyId": "trim-edge-unicode-v1"
+      },
+      "id": "251be39c-3f8c-40f1-92f8-8919a503d1ae",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "4f9ff848-730d-432a-88c9-2e46c21ec248",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "fill-in-blanks",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "48ec1d55-0bd7-46ef-8c03-8aaacf53d3d4",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Synthetic test task: select or describe the blue square."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "e40028ca-7867-40da-b3a5-900db9278f75",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "A shape"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "acfd54b0-f878-4eaa-948d-61abde83acc5",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "B shape"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "f0740d47-9532-425c-9c18-c8d378af57e0",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "X colour"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "08958e08-6ff5-406c-a3ea-a190e88ae898",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Y colour"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "f0740d47-9532-425c-9c18-c8d378af57e0",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "matchingPolicy": "one-right-per-left",
+        "mode": "matching",
+        "normalisationPolicyId": "identity-v1",
+        "pairs": [
+          {
+            "leftKey": "A",
+            "rightKey": "X"
+          },
+          {
+            "leftKey": "B",
+            "rightKey": "Y"
+          }
+        ]
+      },
+      "id": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "left": [
+        {
+          "key": "A",
+          "textRef": {
+            "id": "e40028ca-7867-40da-b3a5-900db9278f75",
+            "revision": 1
+          }
+        },
+        {
+          "key": "B",
+          "textRef": {
+            "id": "acfd54b0-f878-4eaa-948d-61abde83acc5",
+            "revision": 1
+          }
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "48ec1d55-0bd7-46ef-8c03-8aaacf53d3d4",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "matching",
+      "revision": 1,
+      "right": [
+        {
+          "key": "X",
+          "textRef": {
+            "id": "f0740d47-9532-425c-9c18-c8d378af57e0",
+            "revision": 1
+          }
+        },
+        {
+          "key": "Y",
+          "textRef": {
+            "id": "08958e08-6ff5-406c-a3ea-a190e88ae898",
+            "revision": 1
+          }
+        }
+      ],
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "91911e0d-2e74-426a-ad74-bcbfcf936b1e",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "3a6ba39d-b2f7-4146-bcbc-904b5bd33c51",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Synthetic test task: select or describe the blue square."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "b1efb4a4-eb8d-4ceb-939a-073c9156b608",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "3a6ba39d-b2f7-4146-bcbc-904b5bd33c51",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "blue"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "4039c294-2844-4f1a-b88d-1dcd5538233e",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "3a6ba39d-b2f7-4146-bcbc-904b5bd33c51",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "the blue square"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "b1efb4a4-eb8d-4ceb-939a-073c9156b608",
+          "revision": 1
+        },
+        {
+          "id": "4039c294-2844-4f1a-b88d-1dcd5538233e",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "answerRefs": [
+          {
+            "id": "b1efb4a4-eb8d-4ceb-939a-073c9156b608",
+            "revision": 1
+          },
+          {
+            "id": "4039c294-2844-4f1a-b88d-1dcd5538233e",
+            "revision": 1
+          }
+        ],
+        "mode": "accepted-answers",
+        "normalisationPolicyId": "trim-edge-unicode-v1"
+      },
+      "id": "3a6ba39d-b2f7-4146-bcbc-904b5bd33c51",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "91911e0d-2e74-426a-ad74-bcbfcf936b1e",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "short-answer",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "62ed68ce-890e-424a-8f6f-47d03cbe26ca",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "57881a39-e144-4b16-bc65-43d7ade82353",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Synthetic test task: select or describe the blue square."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "text-representation",
+      "id": "c2a6754f-5556-4766-b798-48d0f42c8031",
+      "language": "en",
+      "origin": "synthetic",
+      "ownerId": "0e90e9aa-73a2-47cb-bebd-4ff6b7f41524",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "component-text",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "script": "Latn",
+      "text": "Describe the stated colour without adding unsupported claims."
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "criteria": [
+        {
+          "descriptionRef": {
+            "id": "c2a6754f-5556-4766-b798-48d0f42c8031",
+            "revision": 1
+          },
+          "key": "colour"
+        }
+      ],
+      "entityType": "rubric",
+      "id": "0e90e9aa-73a2-47cb-bebd-4ff6b7f41524",
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "reviewMethod": "qualified-human-review",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "title": "Synthetic description criteria"
+    },
+    {
+      "answerDependencies": [
+        {
+          "id": "0e90e9aa-73a2-47cb-bebd-4ff6b7f41524",
+          "revision": 1
+        }
+      ],
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "entityType": "question",
+      "evaluation": {
+        "mode": "rubric",
+        "normalisationPolicyId": "manual-review-v1",
+        "rubricRef": {
+          "id": "0e90e9aa-73a2-47cb-bebd-4ff6b7f41524",
+          "revision": 1
+        }
+      },
+      "id": "57881a39-e144-4b16-bc65-43d7ade82353",
+      "knowledgeRefs": [
+        {
+          "id": "5e38bc32-9fa2-42b7-b9f1-945721697687",
+          "revision": 1
+        }
+      ],
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "promptRef": {
+        "id": "62ed68ce-890e-424a-8f6f-47d03cbe26ca",
+        "revision": 1
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "questionType": "translation",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "description": "Seven English-only software test tasks, not a learning course.",
+      "entityType": "collection",
+      "id": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "membershipPolicy": "explicit-ordered-questions",
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "purpose": "Contract tests",
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "title": "Synthetic schema coverage"
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "cb52b0e4-b699-4ad3-8c70-82adc2c05445",
+      "order": 1,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "75920e0e-16e3-4756-baed-7ea738bb8262",
+        "revision": 1
+      }
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "eaa67f6f-1929-4605-bc2f-2a80e35cbde1",
+      "order": 2,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "df74a19c-449c-4d8b-b4ba-646c9aab1e4f",
+        "revision": 1
+      }
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "a5fef98a-6921-4568-9d5f-02880a99ffb9",
+      "order": 3,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "1a4eb497-8741-4188-ab31-9d820ffd23e7",
+        "revision": 1
+      }
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "8b6eb044-04aa-48ce-bc59-5df955758595",
+      "order": 4,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "251be39c-3f8c-40f1-92f8-8919a503d1ae",
+        "revision": 1
+      }
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "8034b68f-f043-4129-997a-a4e2cd6d8458",
+      "order": 5,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "a257fde2-6184-4503-ad00-e938a4ac5a92",
+        "revision": 1
+      }
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "246cb5e0-89d8-44d2-a4a3-d9904f48ec25",
+      "order": 6,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "3a6ba39d-b2f7-4146-bcbc-904b5bd33c51",
+        "revision": 1
+      }
+    },
+    {
+      "attributions": [
+        {
+          "agentId": "c79aaa9b-9aa7-4aa0-8498-d0b66b7cc72b",
+          "role": "author"
+        }
+      ],
+      "collectionId": "3007a8e9-da6d-4767-be41-ae3609d05db0",
+      "entityType": "collection-membership",
+      "id": "a1b7a490-a7e1-4bfa-8b8e-200612a2b30a",
+      "order": 7,
+      "origin": "synthetic",
+      "ownership": {
+        "scope": "shared"
+      },
+      "provenance": {
+        "inputRefs": [],
+        "method": "Non-Sanskrit synthetic software fixture, not an actual teaching record or approval.",
+        "sourceRefs": []
+      },
+      "revision": 1,
+      "rightsId": "a4f79900-b790-4e98-8a96-f47396352f4e",
+      "schemaVersion": "0.1.0",
+      "target": {
+        "id": "57881a39-e144-4b16-bc65-43d7ade82353",
+        "revision": 1
+      }
+    }
+  ]
+}

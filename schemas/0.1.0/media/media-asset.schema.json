@@ -1,0 +1,189 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:media-asset",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "availability": {
+          "enum": [
+            "available",
+            "unavailable",
+            "unverified"
+          ]
+        },
+        "byteSize": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "creditLine": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "entityType": {
+          "const": "media-asset"
+        },
+        "fileName": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "format": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "language": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "mediaKind": {
+          "enum": [
+            "document",
+            "presentation",
+            "image",
+            "audio",
+            "video"
+          ]
+        },
+        "mimeType": {
+          "pattern": "^[a-z0-9.+-]+/[a-z0-9.+-]+$",
+          "type": "string"
+        },
+        "reproductionRightsId": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+        },
+        "sha256": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+        },
+        "storage": {
+          "oneOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "const": "local"
+                },
+                "path": {
+                  "pattern": "^assets/[a-z0-9/_.-]+$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "path"
+              ],
+              "type": "object"
+            },
+            {
+              "additionalProperties": false,
+              "properties": {
+                "kind": {
+                  "const": "external"
+                },
+                "uri": {
+                  "format": "uri",
+                  "pattern": "^https://",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "uri"
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "technical": {
+          "additionalProperties": false,
+          "properties": {
+            "durationSeconds": {
+              "minimum": 0.001,
+              "type": "number"
+            },
+            "height": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "pages": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "width": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "pages",
+            "width",
+            "height",
+            "durationSeconds"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "mediaKind",
+        "language",
+        "reproductionRightsId",
+        "storage",
+        "availability"
+      ],
+      "type": "object"
+    },
+    {
+      "if": {
+        "properties": {
+          "storage": {
+            "properties": {
+              "kind": {
+                "const": "local"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "availability": {
+            "const": "available"
+          }
+        },
+        "required": [
+          "byteSize",
+          "sha256",
+          "fileName",
+          "mimeType"
+        ]
+      }
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "mediaKind",
+      "mimeType",
+      "fileName",
+      "byteSize",
+      "sha256",
+      "language",
+      "format",
+      "creditLine",
+      "reproductionRightsId",
+      "storage",
+      "availability",
+      "technical"
+    ]
+  },
+  "type": "object"
+}

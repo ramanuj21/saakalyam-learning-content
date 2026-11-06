@@ -1,0 +1,85 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:registry",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "learnerReleaseEnabled": {
+      "type": "boolean"
+    },
+    "normalisationPolicies": {
+      "additionalProperties": false,
+      "properties": {
+        "identity-v1": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "manual-review-v1": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "trim-edge-unicode-v1": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity-v1",
+        "trim-edge-unicode-v1",
+        "manual-review-v1"
+      ],
+      "type": "object"
+    },
+    "publicContentSubmissions": {
+      "const": "metadata-proposals-only"
+    },
+    "reviewAuthorities": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "agentId": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+          },
+          "scopes": {
+            "items": {
+              "enum": [
+                "rights",
+                "scholarly",
+                "pedagogical",
+                "editorial"
+              ]
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "agentId",
+          "scopes"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "schemas": {
+      "additionalProperties": {
+        "pattern": "^schemas/0.1.0/[a-z0-9/_.-]+$",
+        "type": "string"
+      },
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "schemas",
+    "normalisationPolicies",
+    "reviewAuthorities",
+    "publicContentSubmissions",
+    "learnerReleaseEnabled"
+  ],
+  "type": "object"
+}

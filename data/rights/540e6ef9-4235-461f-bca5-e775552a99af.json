@@ -1,0 +1,35 @@
+{
+  "attributions": [
+    {
+      "agentId": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+      "role": "curator"
+    }
+  ],
+  "basis": "unknown",
+  "entityType": "rights-statement",
+  "evidence": [],
+  "id": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "layers": [
+    "record-metadata",
+    "catalogue-metadata"
+  ],
+  "materialDescription": "Initial public editorial metadata only; licensing/grant terms pending owner decision.",
+  "materialRefs": [],
+  "obligations": [],
+  "origin": "authored",
+  "ownership": {
+    "scope": "shared"
+  },
+  "proposedUses": [],
+  "provenance": {
+    "inputRefs": [],
+    "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+    "sourceRefs": []
+  },
+  "revision": 1,
+  "rightsId": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "schemaVersion": "0.1.0",
+  "unresolvedQuestions": [
+    "Obtain and review exact rights evidence before content release."
+  ]
+}

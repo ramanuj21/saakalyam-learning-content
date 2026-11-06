@@ -1,0 +1,288 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:rights-statement",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "basis": {
+          "enum": [
+            "licence",
+            "permission",
+            "public-domain-assessment",
+            "unknown"
+          ]
+        },
+        "conditions": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "entityType": {
+          "const": "rights-statement"
+        },
+        "evidence": {
+          "items": {
+            "oneOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "accessedAt": {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  "kind": {
+                    "const": "public-notice"
+                  },
+                  "section": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+                  },
+                  "uri": {
+                    "format": "uri",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "uri",
+                  "accessedAt",
+                  "section"
+                ],
+                "type": "object"
+              },
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "restricted-permission"
+                  },
+                  "recordId": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "recordId",
+                  "sha256"
+                ],
+                "type": "object"
+              }
+            ]
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "layers": {
+          "items": {
+            "enum": [
+              "catalogue-metadata",
+              "source-material",
+              "representation",
+              "scholarly-component",
+              "authored-learning",
+              "record-metadata",
+              "corpus-database"
+            ]
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "licenseExpression": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "materialDescription": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "materialRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "obligations": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "attribution",
+                  "share-alike",
+                  "change-notice",
+                  "licence-notice",
+                  "other"
+                ]
+              },
+              "text": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "text"
+            ],
+            "type": "object"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "proposedUses": {
+          "items": {
+            "enum": [
+              "reproduce",
+              "redistribute",
+              "adapt",
+              "commercial"
+            ]
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "rightsHolderRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "unresolvedQuestions": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "basis",
+        "layers",
+        "materialDescription",
+        "materialRefs",
+        "evidence",
+        "proposedUses",
+        "obligations"
+      ],
+      "type": "object"
+    },
+    {
+      "else": {
+        "not": {
+          "required": [
+            "licenseExpression"
+          ]
+        }
+      },
+      "if": {
+        "properties": {
+          "basis": {
+            "const": "licence"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence": {
+            "minItems": 1
+          }
+        },
+        "required": [
+          "licenseExpression"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "basis": {
+            "enum": [
+              "permission",
+              "public-domain-assessment"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidence": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "basis": {
+            "const": "unknown"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "proposedUses": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "basis",
+      "layers",
+      "materialDescription",
+      "materialRefs",
+      "licenseExpression",
+      "evidence",
+      "proposedUses",
+      "obligations",
+      "rightsHolderRefs",
+      "conditions",
+      "unresolvedQuestions"
+    ]
+  },
+  "type": "object"
+}

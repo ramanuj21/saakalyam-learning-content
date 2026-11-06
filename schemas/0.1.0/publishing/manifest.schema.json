@@ -1,0 +1,231 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:manifest",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "else": {
+        "properties": {
+          "assetDigests": {
+            "maxItems": 0
+          },
+          "members": {
+            "maxItems": 0
+          },
+          "resolutionMap": {
+            "maxProperties": 0
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "learner"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "members": {
+            "minItems": 1
+          }
+        },
+        "required": [
+          "databaseRightsRef"
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "assetDigests": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "sha256": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+          }
+        },
+        "required": [
+          "id",
+          "revision",
+          "sha256",
+          "path"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "attributionNotices": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "baseGitCommit": {
+      "pattern": "^[a-f0-9]{40}$",
+      "type": "string"
+    },
+    "databaseRightsRef": {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+    },
+    "datasetVersion": {
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[a-zA-Z0-9.-]+)?$",
+      "type": "string"
+    },
+    "files": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "limitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "members": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "entityType": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+          },
+          "path": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "sha256": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+          }
+        },
+        "required": [
+          "id",
+          "revision",
+          "entityType",
+          "path",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "mode": {
+      "enum": [
+        "tooling",
+        "learner"
+      ]
+    },
+    "resolutionMap": {
+      "additionalProperties": {
+        "minimum": 1,
+        "type": "integer"
+      },
+      "type": "object"
+    },
+    "reviewDependencies": {
+      "items": {
+        "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "rightsNotices": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schemaVersion": {
+      "const": "0.1.0"
+    },
+    "validation": {
+      "additionalProperties": false,
+      "properties": {
+        "errors": {
+          "const": 0
+        },
+        "mode": {
+          "enum": [
+            "tooling",
+            "release"
+          ]
+        },
+        "validatorVersion": {
+          "const": "0.1.0"
+        }
+      },
+      "required": [
+        "errors",
+        "validatorVersion",
+        "mode"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "datasetVersion",
+    "mode",
+    "baseGitCommit",
+    "members",
+    "resolutionMap",
+    "files",
+    "reviewDependencies",
+    "assetDigests",
+    "validation",
+    "attributionNotices",
+    "rightsNotices",
+    "limitations"
+  ],
+  "type": "object"
+}

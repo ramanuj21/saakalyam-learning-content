@@ -1,0 +1,102 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:source-work",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "entityType": {
+          "const": "source-work"
+        },
+        "externalIdentifiers": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "scheme": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "value": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "scheme",
+              "value"
+            ],
+            "type": "object"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "ownership": {
+          "allOf": [
+            {
+              "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/ownership"
+            },
+            {
+              "properties": {
+                "scope": {
+                  "const": "shared"
+                }
+              }
+            }
+          ]
+        },
+        "titles": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/label"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "unresolvedFields": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "workKind": {
+          "enum": [
+            "traditional-work",
+            "commentary",
+            "dictionary",
+            "institutional-resource",
+            "secondary-reference"
+          ]
+        }
+      },
+      "required": [
+        "workKind",
+        "titles"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "workKind",
+      "titles",
+      "externalIdentifiers",
+      "unresolvedFields"
+    ]
+  },
+  "type": "object"
+}

@@ -1,0 +1,29 @@
+name: Validate learning content
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Tests and authoring validation
+        run: |
+          python -m unittest discover -v
+          python -m validation validate
+      - name: Check revisions against PR base
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_COMMIT: ${{ github.event.pull_request.base.sha }}
+        run: python -m validation validate --base-commit "$BASE_COMMIT"
+      - name: Public-file audit
+        run: python -m validation.audit_publication

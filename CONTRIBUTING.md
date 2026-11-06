@@ -1,0 +1,13 @@
+# Contributing
+
+Public GitHub visibility is publication. **Initial public content submissions are metadata proposals only.** Do not paste uncertain-rights Sanskrit, questions, answer keys, scans, adapted prose, private permission letters or personal information into issues, forks or PRs. Public draft/licensing/submission terms and reviewer appointments still need owner decisions. The owner-authorised initial tooling and safe metadata publication does not approve a general public corpus intake.
+
+1. Choose a narrow issue category and inspect existing UUIDs before proposing a new identity. For new entities generate UUIDv4 with `python -c 'import uuid; print(uuid.uuid4())'`. Never derive identity from wording, filename, URL or chapter.
+2. Submit source/edition/locator and attribution evidence only where disclosure is established. Explain access/link, reproduce, redistribute and adapt permissions separately. Do not infer permission from a public website or a contributor sign-off.
+3. Keep questions, representations, rubrics, collections and membership records separate. Preserve Sanskrit bytes and explicitly supplied variants; do not fuzzy-match, drop diacritics or equate scripts. Synthetic English fixtures belong only in tests.
+4. Resource proposals distinguish the logical use from particular assets and external links. Small local assets need confirmed redistribution evidence, exact byte count/SHA-256, a supported MIME adapter and independent rights review before public upload. See [storage policy](policies/asset-storage.md).
+5. Add focused negative and positive contract tests for actual changes. Run the commands in [README](README.md); format with `python -m validation format`. PR CI has read-only permissions and runs no scholarly approval.
+6. Explain affected identities/revisions, evidence, rights, relevant question/resource family, required reviews and actual validation in the PR template. Changed accepted bytes increase revision; altered dependencies invalidate prior review. Supply a retirement/replacement record for withdrawals or confirmed duplicates.
+7. Qualified subject, pedagogical, editorial and rights reviewers decide their own scope and exact digest. No reviewers or grants may be invented. Merge, approval and publication are different events; only an authorised release maintainer can assemble an approved release.
+
+No DCO/CLA, copyright transfer or blanket content/software/database licence is silently adopted. [Governance](GOVERNANCE.md) and [licensing status](LICENSING.md) identify pending decisions. For a rights concern, use the metadata-only issue template without posting the disputed material or private correspondence. Public copies cannot be reliably recalled.

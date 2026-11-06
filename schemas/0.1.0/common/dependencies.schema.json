@@ -1,0 +1,68 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:dependencies",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "properties": {
+    "records": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "datasetUri": {
+            "format": "uri",
+            "type": "string"
+          },
+          "datasetVersion": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "entityType": {
+            "enum": [
+              "vocabulary-entry",
+              "lexical-sense",
+              "grammar-concept",
+              "grammar-rule",
+              "dhatu",
+              "literary-unit",
+              "programme",
+              "taxonomy-node"
+            ]
+          },
+          "id": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
+          },
+          "payloadPath": {
+            "pattern": "^dependencies/[a-z0-9/_.-]+\\.json$",
+            "type": "string"
+          },
+          "revision": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "sha256": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+          }
+        },
+        "required": [
+          "id",
+          "revision",
+          "entityType",
+          "sha256",
+          "datasetVersion",
+          "datasetUri"
+        ],
+        "type": "object"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schemaVersion": {
+      "const": "0.1.0"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "records"
+  ],
+  "type": "object"
+}

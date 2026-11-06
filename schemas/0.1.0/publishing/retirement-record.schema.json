@@ -1,0 +1,67 @@
+{
+  "$id": "urn:saakalyam:learning:0.1.0:retirement-record",
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "allOf": [
+    {
+      "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/header"
+    },
+    {
+      "properties": {
+        "action": {
+          "enum": [
+            "retire",
+            "withdraw"
+          ]
+        },
+        "entityType": {
+          "const": "retirement-record"
+        },
+        "rationale": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "recordedAt": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "replacedBy": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "targetRef": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+        },
+        "targetSha256": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+        }
+      },
+      "required": [
+        "targetRef",
+        "targetSha256",
+        "action",
+        "recordedAt",
+        "rationale"
+      ],
+      "type": "object"
+    }
+  ],
+  "propertyNames": {
+    "enum": [
+      "id",
+      "entityType",
+      "schemaVersion",
+      "revision",
+      "origin",
+      "attributions",
+      "rightsId",
+      "ownership",
+      "provenance",
+      "targetRef",
+      "targetSha256",
+      "action",
+      "recordedAt",
+      "rationale",
+      "replacedBy"
+    ]
+  },
+  "type": "object"
+}

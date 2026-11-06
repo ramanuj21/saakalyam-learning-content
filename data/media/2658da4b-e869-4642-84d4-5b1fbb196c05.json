@@ -1,0 +1,36 @@
+{
+  "attributions": [
+    {
+      "agentId": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+      "role": "curator"
+    }
+  ],
+  "availability": "unverified",
+  "byteSize": 602699,
+  "creditLine": "रामानुज् पाण्डेयः · Saakalyam · 2020",
+  "entityType": "media-asset",
+  "fileName": "class0.pdf",
+  "format": "PDF",
+  "id": "2658da4b-e869-4642-84d4-5b1fbb196c05",
+  "language": "sa",
+  "mediaKind": "document",
+  "mimeType": "application/pdf",
+  "origin": "bibliographic",
+  "ownership": {
+    "scope": "shared"
+  },
+  "provenance": {
+    "inputRefs": [],
+    "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+    "sourceRefs": []
+  },
+  "reproductionRightsId": "d728e7d7-96a6-42f2-b2e9-710111f2835c",
+  "revision": 1,
+  "rightsId": "540e6ef9-4235-461f-bca5-e775552a99af",
+  "schemaVersion": "0.1.0",
+  "sha256": "b86925a9b5ca00b8e34cad1562f03b9030b4a17ba178e540d2a229030bb2b6c8",
+  "storage": {
+    "kind": "external",
+    "uri": "https://saakalyam.org/media/downloads/sbpr/class0.pdf"
+  }
+}
