@@ -2,6 +2,7 @@
 from pathlib import Path
 import json,re,subprocess,sys
 from .core import load,canonical
+from .identity import privacy_issues,assert_public_text
 
 def audit(root):
  root=Path(root).resolve();errors=[];reviewed=[]
@@ -17,9 +18,11 @@ def audit(root):
    if re.search(r'/(?:Users|home)/[^/\s]+/',text):errors.append(name+': local home path must stay private')
    if p.suffix=='.json':
     x=load(p)
+    if name.startswith(('data/','editorial/')) and privacy_issues(x):errors.append(name+': private identity/editorial information')
+    if isinstance(x,dict) and x.get('format')=='saakalyam-attribution-v1':assert_public_text(x)
     if p.read_bytes()!=canonical(x):errors.append(name+': non-deterministic JSON')
    reviewed.append({'path':name,'bytes':p.stat().st_size})
-  except (ValueError,UnicodeError,OSError) as e:errors.append(name+': '+str(e))
+  except (ValueError,UnicodeError,OSError):errors.append(name+': UTF-8/JSON or public-data check failed; inspect locally without logging input values.')
  return reviewed,errors
 
 def main():

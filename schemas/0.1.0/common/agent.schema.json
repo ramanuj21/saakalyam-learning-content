@@ -16,6 +16,7 @@
         },
         "displayName": {
           "minLength": 1,
+          "pattern": "\\S",
           "type": "string"
         },
         "entityType": {
@@ -24,10 +25,39 @@
         "externalIdentifiers": {
           "items": {
             "additionalProperties": false,
+            "allOf": [
+              {
+                "else": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^\\d{4}-\\d{4}-\\d{4}-\\d{3}[\\dX]$",
+                      "type": "string"
+                    }
+                  }
+                },
+                "if": {
+                  "properties": {
+                    "scheme": {
+                      "const": "github"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "value": {
+                      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            ],
             "properties": {
               "scheme": {
-                "minLength": 1,
-                "type": "string"
+                "enum": [
+                  "github",
+                  "orcid"
+                ]
               },
               "value": {
                 "minLength": 1,
@@ -61,6 +91,7 @@
         "publicLinks": {
           "items": {
             "format": "uri",
+            "pattern": "^https://",
             "type": "string"
           },
           "minItems": 0,

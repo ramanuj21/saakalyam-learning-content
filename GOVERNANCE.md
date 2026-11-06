@@ -17,3 +17,11 @@ Corrections retain source evidence and prior Git bytes. Increase revision for ch
 - Current restriction/withdrawal trust, authentication, expiry/distribution, retention and dispute handling before learner delivery.
 
 This task authorises public initial scaffolding and safe metadata, not these unresolved approvals. Do not amend the application’s authoritative Phase 8 documents to manufacture agreement.
+
+## Identity and scoped review implementation
+
+[Identity/review guide](docs/CONTRIBUTOR_IDENTITY.md) distinguishes content Agents, exact reviewer profiles, optional repository submitters and Git metadata. Agent identity is stable across display-name changes and supports people, organisations and pseudonyms. Unknown authorship has no fabricated Agent. Curator/hosting/submission credit is never substituted for original authorship or rights ownership.
+
+Review categories now distinguish Sanskrit/domain, source fidelity, pedagogical, editorial, rights and technical checks. Conflicts must be disclosed; contributors/conflicted reviewers cannot approve required independent review. Non-approval observations can record a conflict and require independent review. Same-time eligible disagreement remains pending. Partial-scope approval and unresolved issues do not qualify the whole record. Earlier exact reviews remain historical after a content revision; a fresh target digest/dependency review is needed. Qualification, appointments, indirect conflicts, appeals and role-specific minimum reviewer counts still require owner decisions. The real registry is unchanged.
+
+This increment implements metadata/privacy/reporting mechanics only. There is no private contact store/facility; public records must not contain private contact details. No submission terms, new licences, DCO/CLA, copyright transfer, draft-visibility decision or rights clearance is enacted. See [implementation ADR](docs/adr/001-contributor-identity.md).

@@ -33,3 +33,8 @@ Tooling archives contain exact files from a frozen Git commit and SHA-256 manife
 ## Deliberate extension decisions
 
 The design package's minimal Question shape did not fully define blanks, matching, rubric records, difficulty, suitability or Resource/MediaAsset. This task expressly authorises those bounded executable extensions. They are documented here as learning 0.1.0 decisions requiring review before external content admission; they do not amend or claim sign-off for Phase 8.1. Source-text/lemma/grammar/literary authoring, full Programme/Activity, database services and learner state remain outside scope.
+
+
+## Contributor identity implementation increment
+
+[Identity/review guide](CONTRIBUTOR_IDENTITY.md) and [ADR 001](adr/001-contributor-identity.md) define executable common-metadata additions: explicit unknown credit, role qualification and preservation checks, six distinct review categories, scoped outcomes/conflicts, optional Workflow submission identity and deterministic working/release attribution reports. Unrelated Question/Resource schemas and current data are byte-identical. Historical editorial refs can resolve exact local Git JSON blobs; ordinary content pins still fail without their exact current revision. Release resolution remains archive-only. No legal/governance gate is relaxed.

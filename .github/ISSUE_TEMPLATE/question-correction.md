@@ -1,18 +1,20 @@
 ---
 name: Question correction
-about: Identify exact UUID/revision and safe correction evidence.
+about: Identify exact content revision, reason, safe evidence and attribution/review impact.
 ---
 
-Public disclosure notice: metadata-only proposals initially. Do not include uncertain-rights content, answer keys, source scans, private information or credentials.
+Public metadata proposals only until draft/submission terms are approved. Do not paste questions, keys, source scans, uncertain-rights prose, private correspondence, email/contact details or credentials. Public GitHub activity and history are visible. Preferred public names or agreed pseudonyms are sufficient; no legal name/email is requested. This template grants no licence or review authority.
 
-Affected UUID/revision or public source:
+Affected content UUID / exact revision / digest:
 
-Observed issue/proposal and why:
+What needs correction and why (describe safely without disclosing uncertain-rights content):
 
-Safe source/evidence reference:
+Supporting public source/evidence refs:
 
-Attribution and known rights/disclosure status:
+Does attribution change? Preserve original author/translator; state actual editor/contributor role. Any removed/reclassified credit needs previous revision, reason and pinned evidence:
 
-Required review / unresolved facts:
+Which previous review decisions / dependencies need reconsideration?
 
-Validation rule/result where applicable:
+Proposed revision, rights/disclosure status and required review categories:
+
+Validation commands / results:

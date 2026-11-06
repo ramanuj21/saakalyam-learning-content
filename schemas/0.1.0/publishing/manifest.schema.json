@@ -77,6 +77,26 @@
       "type": "array",
       "uniqueItems": true
     },
+    "attributionReport": {
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "const": "saakalyam-attribution-v1"
+        },
+        "path": {
+          "const": "attribution.json"
+        },
+        "sha256": {
+          "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256",
+        "format"
+      ],
+      "type": "object"
+    },
     "baseGitCommit": {
       "pattern": "^[a-f0-9]{40}$",
       "type": "string"

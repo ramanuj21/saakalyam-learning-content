@@ -26,3 +26,7 @@ The first implementation supports tooling-only archives from clean frozen Git sn
 - Initial GitHub Actions execution: [successful run](https://github.com/ramanuj21/saakalyam-learning-content/actions/runs/42243968444) for that manifest commit. It ran the tests, authoring validator and public-file audit.
 - Tooling snapshot `0.1.0-tooling.1` pins the initial implementation commit and 59 exact files; its local archive verifier passed. No learner records or binary media are members.
 - Follow-up release hardening prevents reusing a dataset version from another commit; synthetic regression added. No published snapshot is rewritten.
+
+## Subsequent contributor identity increment
+
+The original evidence above records the initial repository delivery. The later [contributor implementation report](CONTRIBUTOR_IMPLEMENTATION.md) records the expanded 97-test suite, public identity/credit/review/report validation, unchanged publication gates and preservation checks. It does not replace the frozen initial tooling release.

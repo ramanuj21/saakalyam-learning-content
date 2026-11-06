@@ -5,6 +5,35 @@
     "attributions": {
       "items": {
         "additionalProperties": false,
+        "allOf": [
+          {
+            "else": {
+              "required": [
+                "agentId"
+              ]
+            },
+            "if": {
+              "properties": {
+                "attributionStatus": {
+                  "const": "unknown"
+                }
+              },
+              "required": [
+                "attributionStatus"
+              ]
+            },
+            "then": {
+              "not": {
+                "required": [
+                  "agentId"
+                ]
+              },
+              "required": [
+                "note"
+              ]
+            }
+          }
+        ],
         "properties": {
           "agentId": {
             "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/uuid"
@@ -25,22 +54,35 @@
             "type": "array",
             "uniqueItems": true
           },
+          "note": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
+          },
           "role": {
             "enum": [
               "author",
-              "editor",
-              "transcriber",
+              "contributor",
               "translator",
+              "transcriber",
+              "editor",
               "commentator",
               "annotator",
-              "contributor",
               "curator",
-              "reviewer"
+              "reviewer",
+              "adapter",
+              "creator",
+              "narrator",
+              "producer"
             ]
+          },
+          "scope": {
+            "minLength": 1,
+            "pattern": "\\S",
+            "type": "string"
           }
         },
         "required": [
-          "agentId",
           "role"
         ],
         "type": "object"
@@ -245,6 +287,34 @@
     "provenance": {
       "additionalProperties": false,
       "properties": {
+        "attributionCorrection": {
+          "additionalProperties": false,
+          "properties": {
+            "evidenceRefs": {
+              "items": {
+                "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "previousRevision": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "reason": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "type": "string"
+            }
+          },
+          "required": [
+            "previousRevision",
+            "reason",
+            "evidenceRefs"
+          ],
+          "type": "object"
+        },
         "inputRefs": {
           "items": {
             "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"

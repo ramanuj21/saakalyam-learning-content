@@ -11,3 +11,15 @@ Public GitHub visibility is publication. **Initial public content submissions ar
 7. Qualified subject, pedagogical, editorial and rights reviewers decide their own scope and exact digest. No reviewers or grants may be invented. Merge, approval and publication are different events; only an authorised release maintainer can assemble an approved release.
 
 No DCO/CLA, copyright transfer or blanket content/software/database licence is silently adopted. [Governance](GOVERNANCE.md) and [licensing status](LICENSING.md) identify pending decisions. For a rights concern, use the metadata-only issue template without posting the disputed material or private correspondence. Public copies cannot be reliably recalled.
+
+## Public credit and minimum metadata
+
+Use [the implemented identity/review guide](docs/CONTRIBUTOR_IDENTITY.md). Public preferred display names or agreed pseudonyms are sufficient; organisations have their own Agents. Never request a legal name or email by default. There is no safe private-contact facility here: do not collect private contact details, correspondence or permission letters in issues, PRs, commits or logs. Public GitHub activity and Git history remain visible; configure your Git privacy preferences before contributing. Nothing copies Git emails into content records.
+
+For an authorised new item, record existing/new UUID and revision, preferred public Agent credit/role, original/transcribed/imported/adapted/translated status, exact source/input pins, disclosure-safe rights evidence and each required review category. Until submission/draft terms are approved, use only metadata proposals; these fields do not open public draft corpus intake or grant a licence.
+
+For a correction, identify exact target revision, what changes and why, public evidence, whether credit changes and which earlier reviews need reconsideration. Preserve author/translator/source/adaptation credit; add an editor role for actual editing. Increment revision. Credit removal/reclassification needs `provenance.attributionCorrection` with the exact previous revision, reason and evidence. Run `python -m validation validate --base-commit <exact-40-character-base>`; local validation without a base cannot check prior credits.
+
+For a review, supply the public reviewer Agent/revision, controlled type and role, target revision/SHA-256, dependency pins, whole-record or field scope, timestamp, outcome, rationale, evidence, limitations/unresolved issues and any conflict. Record independent review separately from content attribution. Technical approval does not establish Sanskrit, pedagogical or rights approval. No real reviewer is appointed by filling a template.
+
+Generate `python -m validation attribution-report --output /tmp/attribution.json` and inspect credits, reviews, submitter evidence and rights notices. JSON preserves complete qualification; Markdown is a reading view. Attribution is not rights ownership. Do not fabricate an Agent for an unknown author or infer authorship from migration/submission/Git activity.

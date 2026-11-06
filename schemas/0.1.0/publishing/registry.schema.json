@@ -42,10 +42,12 @@
           "scopes": {
             "items": {
               "enum": [
-                "rights",
                 "scholarly",
+                "source-fidelity",
                 "pedagogical",
-                "editorial"
+                "editorial",
+                "rights",
+                "technical"
               ]
             },
             "minItems": 1,

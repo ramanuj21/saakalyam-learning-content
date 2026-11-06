@@ -7,6 +7,8 @@ from urllib.parse import urlsplit
 from jsonschema import Draft7Validator, FormatChecker
 from referencing import Registry, Resource
 from referencing.jsonschema import DRAFT7
+from .identity import (EMAIL, privacy_issues, validate_public_identifiers, attribution_issues,
+    approved_for_record, independent, review_binding)
 
 VERSION='0.1.0'
 DIRECTORIES={'agent':'data/agents','rights-statement':'data/rights','text-representation':'data/representations','source-work':'data/sources/works','source-edition':'data/sources/editions','source-reference':'data/sources/references','question':'data/questions','rubric':'data/rubrics','scholarly-component':'data/components','collection':'data/collections','collection-membership':'data/memberships','resource':'data/resources','media-asset':'data/media','review-record':'editorial/reviews','workflow-record':'editorial/workflow','retirement-record':'editorial/retirements'}
@@ -63,9 +65,11 @@ class Diagnostic:
 
 class Validator:
     def __init__(self,root,mode='authoring',base_commit=None):
-        self.root=Path(root).resolve();self.mode=mode;self.base_commit=base_commit;self.issues=[];self.records={};self.paths={};self.raw={};self.external={};self.schemas={};self.config={}
+        self.root=Path(root).resolve();self.mode=mode;self.base_commit=base_commit;self.issues=[];self.records={};self.paths={};self.raw={};self.external={};self.schemas={};self.config={};self.historical={};self.historical_raw={}
     def issue(self,code,file,record=None,field='',message='',refs=None,severity='error',fix='Correct the record or keep it outside publication until the required evidence exists.'):
-        self.issues.append(Diagnostic(severity,code,str(file),record.get('id') if isinstance(record,dict) else None,record.get('revision') if isinstance(record,dict) else None,field,message,refs or [],fix))
+        message=EMAIL.sub('[contact redacted]',message)
+        field=EMAIL.sub('[contact redacted]',field)
+        self.issues.append(Diagnostic(severity,code,EMAIL.sub('[contact redacted]',str(file)),record.get('id') if isinstance(record,dict) and isinstance(record.get('id'),str) and re.fullmatch(r'[0-9a-f-]{36}',record['id']) else None,record.get('revision') if isinstance(record,dict) and isinstance(record.get('revision'),int) else None,field,message,refs or [],fix))
     def pending(self,code,file,r,field,msg,refs=None):self.issue(code,file,r,field,msg,refs,severity='error' if self.mode=='release' else 'warning')
     def safe(self,relative):
         p=self.root/relative
@@ -83,7 +87,7 @@ class Validator:
                     if any(unicodedata.bidirectional(c) in ('RLO','LRO','RLE','LRE','PDF','RLI','LRI','FSI','PDI') for c in v):self.issue('UNICODE-BIDI',rel,value if isinstance(value,dict) else None,path,'Bidi control characters require a reviewed contract; never silently remove them.')
             return value
         except (ValueError,UnicodeError,OSError) as e:
-            self.issue('JSON-PARSE',rel,message=str(e));return None
+            self.issue('JSON-PARSE',rel,message='Invalid JSON/UTF-8 or unreadable file; inspect locally without publishing private input.');return None
     def setup(self):
         try:self.config=self.parse(self.root/'policies/registry.json')
 
@@ -106,30 +110,39 @@ class Validator:
         if s is None:self.issue('TYPE-UNKNOWN',file,r,message='Unknown entity/artifact type: '+str(kind));return False
         try:errors=sorted(Draft7Validator(s,registry=self.registry,format_checker=FORMATS).iter_errors(r),key=lambda e:str(e.path))
         except Exception as e:self.issue('SCHEMA-RESOLUTION',file,r if isinstance(r,dict) else None,message=str(e));return False
-        for e in errors:self.issue('SCHEMA',file,r if isinstance(r,dict) else None,'/'+ '/'.join(map(str,e.path)),e.message)
+        for e in errors:self.issue('SCHEMA',file,r if isinstance(r,dict) else None,'/'+ '/'.join(map(str,e.path)),'Schema constraint failed: '+str(e.validator)+'. Input values are omitted for privacy.')
         return not errors
-    def resolve(self,ref):
+    def resolve(self,ref,historical=False):
         r=self.records.get(ref['id']) or self.external.get(ref['id'])
-        return r if r and ('revision' not in ref or ref['revision']==r['revision']) else None
+        if r and ('revision' not in ref or ref['revision']==r['revision']):return r
+        # Editorial history only: exact old JSON blobs, never Git author/contact metadata.
+        if not historical or not r or 'revision' not in ref or ref['revision']>=r['revision']:return None
+        key=(ref['id'],ref['revision'])
+        if key in self.historical:return self.historical[key]
+        self.historical[key]=None
+        top=subprocess.run(['git','rev-parse','--show-toplevel'],cwd=self.root,capture_output=True,text=True)
+        if top.returncode or Path(top.stdout.strip()).resolve()!=self.root:return None
+        name=self.paths.get(ref['id'])
+        if not name:return None
+        commits=subprocess.run(['git','log','--format=%H','--all','--',name],cwd=self.root,capture_output=True,text=True)
+        for commit in commits.stdout.splitlines():
+            blob=subprocess.run(['git','show',commit+':'+name],cwd=self.root,capture_output=True)
+            if blob.returncode:continue
+            try:old=json.loads(blob.stdout.decode('utf-8'),object_pairs_hook=pairs)
+            except (ValueError,UnicodeError):continue
+            if isinstance(old,dict) and old.get('id')==ref['id'] and old.get('revision')==ref['revision'] and old.get('entityType')==r['entityType']:
+                if not self.shape(old,old['entityType'],name+'@'+str(ref['revision'])):return None
+                self.historical[key]=old;self.historical_raw[key]=blob.stdout;return old
+        return None
+    def raw_for(self,r):
+        key=(r['id'],r['revision'])
+        return self.historical_raw.get(key,self.raw.get(r['id'],canonical(r)))
     def require_type(self,ref,kinds,r,file,path):
-        target=self.resolve(ref)
+        target=self.resolve(ref,historical=r['entityType'] in ('review-record','workflow-record','retirement-record'))
         if target and target['entityType'] not in kinds:self.issue('REF-TYPE',file,r,path,'Target type must be one of '+', '.join(kinds),[ref])
         return target
     def approved(self,r,scope):
-        expected=digest(self.raw.get(r['id'],canonical(r)))
-        authorities=self.config.get('reviewAuthorities',[])
-        inputs={json.dumps(ref,sort_keys=True) for _,ref,_ in references(r) if 'revision' in ref}
-        for review in self.records.values():
-            if review['entityType']!='review-record' or review['targetRef']!={'id':r['id'],'revision':r['revision']} or review['targetSha256']!=expected or review['reviewScope']!=scope:continue
-            author_ids={a['agentId'] for a in r['attributions']}
-            reviewer=review['reviewerRef']['id']
-            if reviewer in author_ids:continue
-            if not any(a.get('agentId')==reviewer and scope in a.get('scopes',[]) for a in authorities):continue
-            if not inputs.issubset({json.dumps(p,sort_keys=True) for p in review['dependencyRefs']}):continue
-            decisions=[v for v in self.records.values() if v['entityType']=='review-record' and v['targetRef']==review['targetRef'] and v['reviewScope']==scope]
-            latest=max(decisions,key=lambda v:(v['reviewedAt'],v['id']))
-            if latest['id']==review['id'] and review['decision']=='approved':return True
-        return False
+        return approved_for_record(r,scope,[v for v in self.records.values() if v['entityType']=='review-record'],self.config.get('reviewAuthorities',[]),self.raw_for,[ref for _,ref,_ in references(r) if 'revision' in ref])
     def publication(self,r,file):
         t=r['entityType']
         if r['origin']=='synthetic':self.pending('PUB-SYNTHETIC',file,r,'/origin','Synthetic fixtures never qualify for learner delivery.')
@@ -150,8 +163,15 @@ class Validator:
         if t=='media-asset' and r['availability']!='available':self.pending('PUB-MEDIA-AVAILABILITY',file,r,'/availability','Unverified/unavailable media cannot be learner-release material.')
     def semantic(self,r,file):
         t=r['entityType']
+        problems=privacy_issues(r)+attribution_issues(r)
+        if t=='agent':problems+=validate_public_identifiers(r)
+        for path,code,message in problems:self.issue(code,file,r,path,message)
+        correction=r['provenance'].get('attributionCorrection')
+        if correction:
+            if correction['previousRevision']>=r['revision']:self.issue('ATTRIBUTION-CORRECTION',file,r,'/provenance/attributionCorrection','Correction must cite an earlier revision.')
+            for ref in correction['evidenceRefs']:self.require_type(ref,['source-reference','source-work','source-edition','review-record','resource','rights-statement'],r,file,'/provenance/attributionCorrection/evidenceRefs')
         for path,ref,kind in references(r):
-            target=self.resolve(ref)
+            target=self.resolve(ref,historical=t in ('review-record','workflow-record','retirement-record'))
             if not target:self.issue('REF-MISSING',file,r,path,'Missing exact referenced identity/revision; no latest/main fallback.',[ref]);continue
             if kind and target['entityType']!=kind:self.issue('REF-TYPE',file,r,path,'Expected '+kind,[ref])
             a,b=r['ownership'],target.get('ownership',{'scope':'shared'})
@@ -181,16 +201,26 @@ class Validator:
             labels=[x['label'] for x in r['locator']['parts']]
             if len(labels)!=len(set(labels)) or (expected and labels!=expected):self.issue('SOURCE-LOCATOR',file,r,'/locator/parts','Locator labels/order do not match the declared source scheme.')
         if t in ('review-record','workflow-record','retirement-record'):
-            target=self.resolve(r['targetRef'])
-            if target and r['targetSha256']!=digest(self.raw.get(target['id'],canonical(target))):self.issue('REVIEW-DIGEST',file,r,'/targetSha256','Decision/sidecar does not bind the exact target bytes.',[r['targetRef']])
+            target=self.resolve(r['targetRef'],historical=True)
+            if target and r['targetSha256']!=digest(self.raw_for(target)):self.issue('REVIEW-DIGEST',file,r,'/targetSha256','Decision/sidecar does not bind the exact target bytes.',[r['targetRef']])
             if target and r['ownership']!=target['ownership']:self.issue('REVIEW-OWNERSHIP',file,r,'/ownership','Sidecar scope must match its target.')
             if t=='review-record':
                 self.require_type(r['reviewerRef'],['agent'],r,file,'/reviewerRef')
-                if target and r['reviewerRef']['id'] in [a['agentId'] for a in target['attributions']]:self.issue('REVIEW-INDEPENDENCE',file,r,'/reviewerRef','Required review cannot be self-certified.')
                 if target:
-                    actual={json.dumps(v,sort_keys=True) for _,v,_ in references(target) if 'revision' in v}
-                    supplied={json.dumps(v,sort_keys=True) for v in r['dependencyRefs']}
-                    if not actual.issubset(supplied):self.issue('REVIEW-DEPENDENCIES',file,r,'/dependencyRefs','Review omits a critical pinned dependency.')
+                    if not independent(r,target) and r['decision']=='approved':self.issue('REVIEW-INDEPENDENCE',file,r,'/reviewerRef','Independent approval cannot be self-certified or carry a declared conflict.')
+                    elif not independent(r,target) and not r.get('conflictsOfInterest'):self.issue('REVIEW-CONFLICT',file,r,'/conflictsOfInterest','A contributor review must declare its conflict and seek independent review.')
+                    problems=review_binding(r,target,self.raw_for(target),[v for _,v,_ in references(target) if 'revision' in v])
+                    if 'scope-field-unresolved' in problems:self.issue('REVIEW-SCOPE',file,r,'/scope/fields','Review field pointers must resolve on the exact target revision.')
+                    if 'critical-dependencies-missing' in problems:self.issue('REVIEW-DEPENDENCIES',file,r,'/dependencyRefs','Review omits a critical pinned dependency.')
+                    if 'review-role-type-mismatch' in problems:self.issue('REVIEW-VOCABULARY',file,r,'/reviewType','Review category, type and reviewer role must agree.')
+            if t=='review-record' and 'contextUri' in r:
+                u=urlsplit(r['contextUri'])
+                if u.scheme!='https' or not u.netloc or u.username or u.password or u.query:self.issue('REVIEW-URI',file,r,'/contextUri','Use a public HTTPS context link without credentials or query parameters.')
+            if t=='workflow-record' and r.get('submission'):
+                self.require_type(r['submission']['submitterRef'],['agent'],r,file,'/submission/submitterRef')
+                if 'contextUri' in r['submission']:
+                    u=urlsplit(r['submission']['contextUri'])
+                    if u.scheme!='https' or not u.netloc or u.username or u.password or u.query:self.issue('SUBMISSION-URI',file,r,'/submission/contextUri','Use a public HTTPS context link without credentials or query parameters.')
         if t=='collection-membership':
             self.require_type({'id':r['collectionId']},['collection'],r,file,'/collectionId');self.require_type(r['target'],['question'],r,file,'/target')
         if t=='rubric':
@@ -275,15 +305,23 @@ class Validator:
         if not re.fullmatch('[a-f0-9]{40}',self.base_commit):self.issue('GIT-BASE','',message='Base must be an exact Git commit SHA.');return
         result=subprocess.run(['git','ls-tree','-r','--name-only',self.base_commit,'--','data','editorial'],cwd=self.root,text=True,capture_output=True)
         if result.returncode:self.issue('GIT-BASE','',message='Base commit unavailable locally. Fetch exact history before validation.');return
+        old_ids=set()
         for name in result.stdout.splitlines():
             if not name.endswith('.json'):continue
             old_bytes=subprocess.check_output(['git','show',self.base_commit+':'+name],cwd=self.root)
-            old=json.loads(old_bytes)
+            old=json.loads(old_bytes);old_ids.add(old['id'])
             current=self.records.get(old['id'])
             if not current:self.issue('REVISION-DELETED',name,old,message='Keep the identity; record retirement instead of deleting accepted records.');continue
             if current['entityType']!=old['entityType'] or current['ownership']!=old['ownership']:self.issue('IDENTITY-REPURPOSED',name,current,message='Type/ownership promotion cannot silently reuse the old identity.')
+            removed=[a for a in old['attributions'] if a not in current['attributions']]
+            if removed:
+                correction=current['provenance'].get('attributionCorrection',{})
+                if correction.get('previousRevision')!=old['revision'] or not correction.get('reason','').strip() or not correction.get('evidenceRefs'):
+                    self.issue('ATTRIBUTION-PRESERVATION',self.paths[current['id']],current,'/attributions','Preserve existing credits; a removal/reclassification requires a reason and pinned evidence bound to the prior revision.')
             if self.raw[current['id']]!=old_bytes and current['revision']<=old['revision']:self.issue('REVISION-NOT-INCREMENTED',self.paths[current['id']],current,'/revision','Changed payload requires an incremented revision.')
             if self.raw[current['id']]==old_bytes and current['revision']<old['revision']:self.issue('REVISION-REGRESSION',self.paths[current['id']],current,'/revision','Revision cannot decrease.')
+        for r in self.records.values():
+            if r['entityType']=='agent' and r['id'] not in old_ids and r['id'][14]!='4':self.issue('AGENT-UUID-NEW',self.paths[r['id']],r,'/id','New Agents require random UUIDv4; retain reviewed legacy identities separately.')
     def run(self):
         self.setup()
         if any(x.severity=='error' for x in self.issues):return self.issues
@@ -363,11 +401,16 @@ def archive_release(root,destination,version,mode='tooling'):
     for name in sorted(names):
         b=subprocess.check_output(['git','show',commit+':'+name],cwd=root);files.append({'path':name,'sha256':digest(b)})
     manifest={'schemaVersion':VERSION,'datasetVersion':version,'mode':'tooling','baseGitCommit':commit,'members':[],'resolutionMap':{},'files':files,'reviewDependencies':[],'assetDigests':[],'validation':{'errors':0,'validatorVersion':VERSION,'mode':'tooling'},'attributionNotices':['Existing source credits remain on metadata records; no source media is part of this tooling archive.'],'rightsNotices':['Licensing decisions remain pending. Public availability is not a redistribution/adaptation grant for Pravesha source content.'],'limitations':['Tooling snapshot only; no learner content release, approved question, media binary or publication rights asserted.']}
+    from .attribution import release_report
+    # Tooling has no content members; its report preserves the manifest notices.
+    report=release_report(root,manifest,schema_root=root)
+    manifest['attributionReport']={'path':'attribution.json','sha256':digest(canonical(report)),'format':'saakalyam-attribution-v1'}
     v.shape(manifest,'manifest','manifest.json')
     if any(x.severity=='error' for x in v.issues):raise ValueError('Manifest failed schema validation.')
     destination.mkdir(parents=True)
     for name in names:
         p=destination/'snapshot'/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(subprocess.check_output(['git','show',commit+':'+name],cwd=root))
+    (destination/'attribution.json').write_bytes(canonical(report))
     (destination/'manifest.json').write_bytes(canonical(manifest));return manifest
 
 def verify_release(path):
@@ -383,6 +426,10 @@ def verify_release(path):
     if actual!={f['path'] for f in m['files']}:raise ValueError('Archive has unmanifested or duplicate members.')
     if len(m['files'])!=len(actual):raise ValueError('Duplicate release file membership.')
     if any(d.severity=='error' for d in v.issues):raise ValueError('Release manifest/schema invalid.')
+    if m.get('attributionReport'):
+        from .attribution import release_report
+        entry=m['attributionReport'];p=path/entry['path']
+        if p.is_symlink() or digest(p.read_bytes())!=entry['sha256'] or p.read_bytes()!=canonical(release_report(path,m)):raise ValueError('Attribution report differs from exact pinned release records/notices.')
     return m
 
 def main(argv=None):
@@ -391,6 +438,7 @@ def main(argv=None):
     sub.add_parser('format')
     build=sub.add_parser('release');build.add_argument('--version',required=True);build.add_argument('--output',required=True);build.add_argument('--mode',choices=['tooling','learner'],default='tooling')
     verify=sub.add_parser('verify-release');verify.add_argument('path')
+    report=sub.add_parser('attribution-report');report.add_argument('--release');report.add_argument('--output',required=True);report.add_argument('--format',choices=['json','markdown'],default='json')
     args=parser.parse_args(argv)
     if args.command=='validate':
         v=validate(args.root,args.mode,args.base_commit)
@@ -405,6 +453,11 @@ def main(argv=None):
             for base in ('data','editorial','schemas','policies','tests/fixtures'):
                 for p in (root/base).rglob('*.json'):p.write_bytes(canonical(load(p)))
             p=root/'dependencies.json';p.write_bytes(canonical(load(p)))
+        elif args.command=='attribution-report':
+            from .attribution import working_report,release_report,markdown
+            report=release_report(args.release) if args.release else working_report(args.root)
+            content=canonical(report) if args.format=='json' else markdown(report).encode('utf-8')
+            Path(args.output).write_bytes(content)
         elif args.command=='release':print(json.dumps(archive_release(args.root,args.output,args.version,args.mode),indent=2))
         else:print('Verified tooling release '+verify_release(args.path)['datasetVersion'])
     except (ValueError,OSError,subprocess.SubprocessError) as e:print(str(e),file=sys.stderr);return 1

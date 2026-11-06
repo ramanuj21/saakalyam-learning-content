@@ -7,6 +7,38 @@
     },
     {
       "properties": {
+        "conflictsOfInterest": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "enum": [
+                  "authorship",
+                  "translation",
+                  "editing",
+                  "rights-holder",
+                  "submission",
+                  "other"
+                ]
+              },
+              "note": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "resolution": {
+                "const": "requires-independent-review"
+              }
+            },
+            "required": [
+              "kind",
+              "note",
+              "resolution"
+            ],
+            "type": "object"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
         "contextUri": {
           "format": "uri",
           "type": "string"
@@ -15,7 +47,9 @@
           "enum": [
             "approved",
             "changes-requested",
-            "rejected"
+            "rejected",
+            "disputed",
+            "unable-to-determine"
           ]
         },
         "dependencyRefs": {
@@ -29,6 +63,22 @@
         "entityType": {
           "const": "review-record"
         },
+        "evidenceRefs": {
+          "items": {
+            "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
         "rationale": {
           "minLength": 1,
           "type": "string"
@@ -36,9 +86,21 @@
         "reviewScope": {
           "enum": [
             "scholarly",
+            "source-fidelity",
+            "pedagogical",
             "editorial",
             "rights",
-            "pedagogical"
+            "technical"
+          ]
+        },
+        "reviewType": {
+          "enum": [
+            "sanskrit-domain",
+            "source-fidelity",
+            "pedagogical",
+            "editorial",
+            "rights",
+            "technical-schema"
           ]
         },
         "reviewedAt": {
@@ -48,11 +110,80 @@
         "reviewerRef": {
           "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
         },
+        "reviewerRole": {
+          "enum": [
+            "domain-reviewer",
+            "source-reviewer",
+            "pedagogical-reviewer",
+            "editorial-reviewer",
+            "rights-reviewer",
+            "technical-reviewer"
+          ]
+        },
+        "scope": {
+          "additionalProperties": false,
+          "allOf": [
+            {
+              "else": {
+                "not": {
+                  "required": [
+                    "fields"
+                  ]
+                }
+              },
+              "if": {
+                "properties": {
+                  "kind": {
+                    "const": "fields"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "fields"
+                ]
+              }
+            }
+          ],
+          "properties": {
+            "fields": {
+              "items": {
+                "pattern": "^(?:/(?:[^~/]|~[01])*)+$",
+                "type": "string"
+              },
+              "minItems": 1,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "kind": {
+              "enum": [
+                "whole-record",
+                "fields"
+              ]
+            },
+            "note": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
         "targetRef": {
           "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/pinnedRef"
         },
         "targetSha256": {
           "$ref": "urn:saakalyam:learning:0.1.0:common#/definitions/sha256"
+        },
+        "unresolvedIssues": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
         }
       },
       "required": [
@@ -66,6 +197,120 @@
         "dependencyRefs"
       ],
       "type": "object"
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewScope": {
+            "const": "scholarly"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewType": {
+            "const": "sanskrit-domain"
+          },
+          "reviewerRole": {
+            "const": "domain-reviewer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewScope": {
+            "const": "source-fidelity"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewType": {
+            "const": "source-fidelity"
+          },
+          "reviewerRole": {
+            "const": "source-reviewer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewScope": {
+            "const": "pedagogical"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewType": {
+            "const": "pedagogical"
+          },
+          "reviewerRole": {
+            "const": "pedagogical-reviewer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewScope": {
+            "const": "editorial"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewType": {
+            "const": "editorial"
+          },
+          "reviewerRole": {
+            "const": "editorial-reviewer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewScope": {
+            "const": "rights"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewType": {
+            "const": "rights"
+          },
+          "reviewerRole": {
+            "const": "rights-reviewer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reviewScope": {
+            "const": "technical"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "reviewType": {
+            "const": "technical-schema"
+          },
+          "reviewerRole": {
+            "const": "technical-reviewer"
+          }
+        }
+      }
     }
   ],
   "propertyNames": {
@@ -87,7 +332,14 @@
       "reviewedAt",
       "rationale",
       "dependencyRefs",
-      "contextUri"
+      "contextUri",
+      "reviewType",
+      "reviewerRole",
+      "evidenceRefs",
+      "limitations",
+      "unresolvedIssues",
+      "scope",
+      "conflictsOfInterest"
     ]
   },
   "type": "object"

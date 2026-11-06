@@ -25,5 +25,12 @@ jobs:
         env:
           BASE_COMMIT: ${{ github.event.pull_request.base.sha }}
         run: python -m validation validate --base-commit "$BASE_COMMIT"
+      - name: Deterministic public attribution report
+        run: |
+          python -m validation attribution-report --output /tmp/attribution-a.json
+          python -m validation attribution-report --output /tmp/attribution-b.json
+          cmp /tmp/attribution-a.json /tmp/attribution-b.json
+          python -m validation attribution-report --format markdown --output /tmp/attribution.md
+          python -m compileall -q validation tests
       - name: Public-file audit
         run: python -m validation.audit_publication

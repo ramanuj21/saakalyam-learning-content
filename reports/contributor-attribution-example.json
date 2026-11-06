@@ -1,0 +1,246 @@
+{
+  "format": "saakalyam-attribution-v1",
+  "limitations": [
+    "Structured public credit only. Omitted authorship is not inferred; an explicit unknown credit has no Agent.",
+    "Recorded reviews apply only to exact target bytes and declared scope. Approval categories do not substitute for one another.",
+    "Attribution, source credit, repository submission and review do not grant rights or establish learner-release eligibility."
+  ],
+  "notices": {},
+  "records": [
+    {
+      "attributions": [
+        {
+          "agent": {
+            "agentKind": "pseudonym",
+            "displayName": "ramanuj21",
+            "id": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+            "publicLinks": [
+              "https://github.com/ramanuj21"
+            ],
+            "revision": 1
+          },
+          "role": "curator"
+        }
+      ],
+      "authorshipStatus": "not-recorded",
+      "entityType": "resource",
+      "id": "0fc91d1f-a4f9-44ed-800e-c3a56613aa43",
+      "independentApprovalByCategory": {
+        "editorial": false,
+        "pedagogical": false,
+        "rights": false,
+        "scholarly": false,
+        "source-fidelity": false,
+        "technical": false
+      },
+      "label": "Pravesha introduction class — external recording reference",
+      "origin": "authored",
+      "provenance": {
+        "inputRefs": [],
+        "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+        "sourceRefs": []
+      },
+      "reviews": [],
+      "revision": 1,
+      "rights": [
+        {
+          "basis": "unknown",
+          "category": "record",
+          "id": "540e6ef9-4235-461f-bca5-e775552a99af",
+          "obligations": [],
+          "proposedUses": [],
+          "revision": 1,
+          "rightsHolders": [],
+          "unresolvedQuestions": [
+            "Obtain and review exact rights evidence before content release."
+          ]
+        }
+      ],
+      "sha256": "93290217d500531442745ad92634045d41cfb636791cbd9a35c96b5ec78ea9a7",
+      "submissions": []
+    },
+    {
+      "attributions": [
+        {
+          "agent": {
+            "agentKind": "pseudonym",
+            "displayName": "ramanuj21",
+            "id": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+            "publicLinks": [
+              "https://github.com/ramanuj21"
+            ],
+            "revision": 1
+          },
+          "role": "curator"
+        }
+      ],
+      "authorshipStatus": "not-recorded",
+      "entityType": "media-asset",
+      "id": "2658da4b-e869-4642-84d4-5b1fbb196c05",
+      "independentApprovalByCategory": {
+        "editorial": false,
+        "pedagogical": false,
+        "rights": false,
+        "scholarly": false,
+        "source-fidelity": false,
+        "technical": false
+      },
+      "label": "class0.pdf",
+      "origin": "bibliographic",
+      "provenance": {
+        "inputRefs": [],
+        "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+        "sourceRefs": []
+      },
+      "reviews": [],
+      "revision": 1,
+      "rights": [
+        {
+          "basis": "unknown",
+          "category": "record",
+          "id": "540e6ef9-4235-461f-bca5-e775552a99af",
+          "obligations": [],
+          "proposedUses": [],
+          "revision": 1,
+          "rightsHolders": [],
+          "unresolvedQuestions": [
+            "Obtain and review exact rights evidence before content release."
+          ]
+        },
+        {
+          "basis": "unknown",
+          "category": "reproduction",
+          "id": "d728e7d7-96a6-42f2-b2e9-710111f2835c",
+          "obligations": [],
+          "proposedUses": [],
+          "revision": 1,
+          "rightsHolders": [],
+          "unresolvedQuestions": [
+            "Obtain and review exact rights evidence before content release."
+          ]
+        }
+      ],
+      "sha256": "1d080be6b6f4beb97f1d50ec3378403b1709b03c4fd4e334e48111923b14b3c7",
+      "submissions": []
+    },
+    {
+      "attributions": [
+        {
+          "agent": {
+            "agentKind": "pseudonym",
+            "displayName": "ramanuj21",
+            "id": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+            "publicLinks": [
+              "https://github.com/ramanuj21"
+            ],
+            "revision": 1
+          },
+          "role": "curator"
+        }
+      ],
+      "authorshipStatus": "not-recorded",
+      "entityType": "resource",
+      "id": "b860548b-851c-43b1-bdd7-e2a1e15f7825",
+      "independentApprovalByCategory": {
+        "editorial": false,
+        "pedagogical": false,
+        "rights": false,
+        "scholarly": false,
+        "source-fidelity": false,
+        "technical": false
+      },
+      "label": "Pravesha introduction presentation — external metadata reference",
+      "origin": "authored",
+      "provenance": {
+        "inputRefs": [],
+        "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+        "sourceRefs": []
+      },
+      "reviews": [],
+      "revision": 1,
+      "rights": [
+        {
+          "basis": "unknown",
+          "category": "record",
+          "id": "540e6ef9-4235-461f-bca5-e775552a99af",
+          "obligations": [],
+          "proposedUses": [],
+          "revision": 1,
+          "rightsHolders": [],
+          "unresolvedQuestions": [
+            "Obtain and review exact rights evidence before content release."
+          ]
+        }
+      ],
+      "sha256": "8c923ff1d3dda89e5d44ce281fa90b8bb2c52340e85a1f3aed900295a9311afe",
+      "submissions": []
+    },
+    {
+      "attributions": [
+        {
+          "agent": {
+            "agentKind": "pseudonym",
+            "displayName": "ramanuj21",
+            "id": "5d7e9a96-7a3b-4d88-8d7a-c004e450a77d",
+            "publicLinks": [
+              "https://github.com/ramanuj21"
+            ],
+            "revision": 1
+          },
+          "role": "curator"
+        }
+      ],
+      "authorshipStatus": "not-recorded",
+      "entityType": "media-asset",
+      "id": "efeaef5e-a328-45c4-9e31-e7253852db9d",
+      "independentApprovalByCategory": {
+        "editorial": false,
+        "pedagogical": false,
+        "rights": false,
+        "scholarly": false,
+        "source-fidelity": false,
+        "technical": false
+      },
+      "label": "Media Asset efeaef5e-a328-45c4-9e31-e7253852db9d",
+      "origin": "bibliographic",
+      "provenance": {
+        "inputRefs": [],
+        "method": "Repository metadata prepared under the owner-authorised initial implementation; no subject approval or licence grant inferred.",
+        "sourceRefs": []
+      },
+      "reviews": [],
+      "revision": 1,
+      "rights": [
+        {
+          "basis": "unknown",
+          "category": "record",
+          "id": "540e6ef9-4235-461f-bca5-e775552a99af",
+          "obligations": [],
+          "proposedUses": [],
+          "revision": 1,
+          "rightsHolders": [],
+          "unresolvedQuestions": [
+            "Obtain and review exact rights evidence before content release."
+          ]
+        },
+        {
+          "basis": "unknown",
+          "category": "reproduction",
+          "id": "15f42d25-3642-40ef-af12-e6431d80a132",
+          "obligations": [],
+          "proposedUses": [],
+          "revision": 1,
+          "rightsHolders": [],
+          "unresolvedQuestions": [
+            "Obtain and review exact rights evidence before content release."
+          ]
+        }
+      ],
+      "sha256": "ca1c3ae514b8706f6c2153102e4cfb96d685c3777d50fce3d9cbb1356401e339",
+      "submissions": []
+    }
+  ],
+  "source": {
+    "kind": "working-tree"
+  }
+}
