@@ -148,6 +148,14 @@ class ContentTests(unittest.TestCase):
   self.save();self.init_git();(self.root/'dirty.txt').write_text('change');self.assertRaises(ValueError,archive_release,self.root,self.root/'output','0.1.0')
 
 
+ def test_dataset_version_cannot_be_rebound_to_a_different_commit(self):
+  self.save();self.init_git();out=self.root.parent/(self.root.name+'-version-check')
+  try:
+   m=archive_release(self.root,out,'0.1.0-test.1');p=self.root/'releases/0.1.0-test.1/manifest.json';p.parent.mkdir(parents=True);p.write_bytes(canonical(m))
+   subprocess.run(['git','add','.'],cwd=self.root,check=True,capture_output=True);subprocess.run(['git','commit','-qm','Freeze version binding'],cwd=self.root,check=True,capture_output=True)
+   self.assertRaises(ValueError,archive_release,self.root,self.root/'new-output','0.1.0-test.1')
+  finally:shutil.rmtree(out,ignore_errors=True)
+
 class ReleaseResolutionTests(unittest.TestCase):
  def setUp(self):self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
  def tearDown(self):self.tmp.cleanup()

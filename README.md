@@ -37,10 +37,10 @@ The logical Resource, its particular MediaAsset, file bytes and physical storage
 From a clean committed snapshot:
 
 ```sh
-python -m validation release --version 0.1.0-tooling.1 --output /tmp/saakalyam-tooling-archive
+python -m validation release --version 0.1.0-tooling.2 --output /tmp/saakalyam-tooling-archive
 python -m validation verify-release /tmp/saakalyam-tooling-archive
 ```
 
-The manifest pins the exact Git commit and file SHA-256 values. Output is generated outside the source snapshot to avoid a self-referential commit/digest. An existing output/version is never overwritten. This initial command supports **tooling-only** archives: no learner records, source binaries or approved rights are implied. Learner archive assembly remains deliberately blocked until the governance and external-package admission requirements are met.
+The manifest pins the exact Git commit and file SHA-256 values. Output is generated outside the source snapshot to avoid a self-referential commit/digest. An existing output/version is never overwritten or rebound to a different Git commit; select an unused version or reproduce from the exact recorded commit. This initial command supports **tooling-only** archives: no learner records, source binaries or approved rights are implied. Learner archive assembly remains deliberately blocked until the governance and external-package admission requirements are met.
 
 Public GitHub records, source text and answer keys are readable by everyone. This is appropriate for formative editorial content, not secret examinations. Future applications must make their own approved delivery projections; this repository implements no backend enforcement. Public media can be copied by third parties, and public forks cannot be remotely erased.

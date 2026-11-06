@@ -351,6 +351,8 @@ def archive_release(root,destination,version,mode='tooling'):
     if not re.fullmatch(r'\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?',version):raise ValueError('Invalid dataset version.')
     commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
     if subprocess.check_output(['git','status','--porcelain','--untracked-files=all'],cwd=root,text=True).strip():raise ValueError('Freeze a clean committed snapshot before creating release artifacts.')
+    published=root/'releases'/version/'manifest.json'
+    if published.exists() and load(published).get('baseGitCommit')!=commit:raise ValueError('Dataset version already binds another commit; check out that exact commit or choose a new version.')
     v=validate(root,'authoring' if mode=='tooling' else 'release')
     if any(x.severity=='error' for x in v.issues):raise ValueError('Validation failed; no release built: '+', '.join(sorted({x.ruleCode for x in v.issues if x.severity=='error'})))
     if mode!='tooling':raise ValueError('Learner release assembly is intentionally blocked pending external-package and restriction-trust admission.')
